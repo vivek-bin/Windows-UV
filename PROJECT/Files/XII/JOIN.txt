@@ -1,0 +1,91 @@
+//to join to -strings or numbers-using function overloading
+#include<iostream.h>
+#include<conio.h>
+#include<math.h>
+#include<stdio.h>
+
+class joining
+ {
+   int a,b;
+   char str1[20],str2[20];
+  public:
+   void join(int a, int b)
+   {
+    double final;
+    int temp=b,count;
+    for(count=0;b>0;count++)
+      b=b/10;
+    final=a*pow(10,count);
+    final+=temp;
+    cout<<"The joined number is : "<<final;
+   }
+
+   void join(char a[15],char b[15])
+   {
+    char final[30];
+    int i,j;
+    for(i=0;a[i]!='\0';i++)
+      final[i]=a[i];
+    final[i]=' ';
+    for(j=0,i++;b[j]!='\0';i++,j++)
+      final[i]=b[j];
+    final[i]='\0';
+    cout<<"Final string is : "<<final;
+   }
+
+  void numjoin()
+  {
+    cout<<"\n\nEnter first number : ";
+    cin>>a;
+    cout<<"Enter second number : ";
+    cin>>b;
+    join(a,b);
+  }
+
+  void chjoin()
+  {
+    cout<<"\n\nEnter first string : ";
+    gets(str1);
+    cout<<"Enter second string : ";
+    gets(str2);
+    join(str1,str2);
+  }
+};
+
+
+void main()
+{
+clrscr();
+int ch;
+joining j1;
+cout<<"Menu\n\n";
+cout<<"1. Join two numbers\n";
+cout<<"2. Join two strings\n";
+cout<<"Enter your choice :";
+cin>>ch;
+switch(ch)
+{
+case 1:j1.numjoin();
+       break;
+case 2:j1.chjoin();
+       break;
+default:cout<<"Wrong chice";
+	break;
+}
+getch();
+}
+
+
+/*
+Output:
+Menu
+
+1. Join two numbers
+2. Join two strings
+Enter your choice :1
+
+
+Enter first number : 234
+Enter second number : 675
+The joined number is : 234675
+*/

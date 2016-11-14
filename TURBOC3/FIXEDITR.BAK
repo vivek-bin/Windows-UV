@@ -1,0 +1,19 @@
+#include<iostream.h>
+#include<conio.h>
+#include<process.h>
+#include<math.h>
+void main()
+{
+clrscr();
+double a,fa,x,fx,er;
+cout<<"\nFixed point iteration for x^3-x+1";
+cout<<"\nEnter the first approximation";cin>>a;
+cout<<"\nEnter the value of the error: ";cin>>er;
+fa=a*a*a-2*a+1;
+while ((fa-x)>er)
+{
+x=fa*fa*fa-2*fa+1;
+}
+cout<<"Solution is"<<x;
+getch();
+}

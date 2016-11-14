@@ -1,0 +1,39 @@
+//check for validity of date
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+int mm, dd, yy;
+clrscr();
+cout<<"enter date";
+cin>>dd;
+cout<<"enter month";
+cin>>mm;
+cout<<"enter year";
+cin>>yy;
+if(mm<=12)
+  if(dd<=31)
+    if((mm==1)||(mm==3)||(mm==5)||(mm==7)||(mm==8)||(mm==10)||(mm==12))
+    cout<<"valid date";
+    else
+      if(mm==2)
+        if(dd<=28)
+        cout<<"valid date";
+        else
+          if(yy%4==0 && dd==29)
+          cout<<"valid date";
+          else
+          cout<<"invalid date";
+
+      else
+        if(dd<=30)
+        cout<<"valid date";
+        else
+        cout<<"invalid date";
+  else
+  cout<<"invalid date";
+else
+cout<<"invalid date";
+
+getch();
+}

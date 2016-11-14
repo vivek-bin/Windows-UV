@@ -1,0 +1,40 @@
+//AnandBindal
+//S132E0004
+//Find root by bisection method
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+    clrscr();
+    cout<<"The bisection method \n";
+    cout<<"x^3-3x+1\n\n";
+    double a,b,m,ansm,ans;
+    int i,n;
+    cout<<"Enter the lower limit of the interval ";
+    cin>>a;
+    cout<<"Enter the upper limit of the interval ";
+    cin>>b;
+    cout<<"Enter the number of iterations ";
+    cin>>n;
+    i=1;
+    while(i<=n)
+    {
+	m=(a+b)/2;
+	ansm=m*m*m - 3*m+1;
+	ans = a*a*a - 3 * a + 1;
+	if (ansm==0)
+	{
+	   cout<<"the root is "<<m;
+	   break;
+	 }
+	else
+	  if( ans * ansm <0)
+	     b=m;
+	  else
+	     a = m;
+	i++;
+      }
+      cout<<"root within "<<n<<" iterations is "<<m;
+      getch();
+}
+

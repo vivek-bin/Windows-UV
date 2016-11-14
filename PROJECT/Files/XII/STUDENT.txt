@@ -1,0 +1,61 @@
+//to pass a structure
+#include<iostream.h>
+#include<stdio.h>
+#include<conio.h>
+#include<ctype.h>
+
+struct student
+{
+  char name[20];
+  short int age;
+  int roll;
+  char clas[5];
+};
+
+student stucopy(student s1);
+
+void main()
+{
+  clrscr();
+  student s1,s2;
+  cout<<"Enter the details of student 1 :- \n";
+  cout<<"Name: ";
+  gets(s1.name);
+  cout<<"Age : ";
+  cin>>s1.age;
+  cout<<"Roll number : ";
+  cin>>s1.roll;
+  cout<<"Class : ";
+  gets(s1.clas);
+  s2=stucopy(s1);
+  cout<<endl;
+  cout<<"The details of student 2 are :- ";
+  cout<<"\nName: "<<s2.name;
+  cout<<"\nAge : "<<s2.age;
+  cout<<"\nRoll number : "<<s2.roll;
+  cout<<"\nClass : "<<s2.clas;
+  getch();
+}
+
+student stucopy(student s1)
+{
+student s2;
+ for(int i=0;i<20;i++)
+   s1.name[i]=toupper(s1.name[i]);
+return(s1);
+}
+
+/*
+Output:
+Enter the details of student 1 :-
+Name: vivek
+Age : 17
+Roll number : 123
+Class : xii
+
+The details of student 2 are :-
+Name: VIVEK
+Age : 17
+Roll number : 123
+Class : xii
+*/

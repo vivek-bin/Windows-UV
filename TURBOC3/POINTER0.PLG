@@ -1,0 +1,29 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: POINTER0 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Anand\LOCALS~1\Temp\RSP4D.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/POINTER0.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\TURBOC3\POINTER0.CPP"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Anand\LOCALS~1\Temp\RSP4D.tmp" 
+<h3>Output Window</h3>
+Compiling...
+POINTER0.CPP
+D:\TURBOC3\POINTER0.CPP(15) : error C2819: type 'book' does not have an overloaded member 'operator ->'
+        D:\TURBOC3\POINTER0.CPP(2) : see declaration of 'book'
+D:\TURBOC3\POINTER0.CPP(15) : error C2227: left of '->code' must point to class/struct/union
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+POINTER0.OBJ - 2 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

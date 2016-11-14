@@ -1,0 +1,54 @@
+ //to pass a class as an argument
+#include<iostream.h>
+#include<conio.h>
+
+class distance
+{
+  int feet,inches;
+ public:
+  int getit(int a,int b)
+   {
+    feet=a;inches=b;
+   }
+
+  void printit()
+  {
+    cout<<"\nFeet :"<<feet;
+    cout<<"\nInches :"<<inches;
+  }
+
+  distance sum(distance a)
+  {
+    distance d3;
+    d3.feet=a.feet+feet+(inches+a.inches)/12;
+    d3.inches=(a.inches+inches)%12;
+    return d3;
+   }
+ };
+
+void main()
+{
+ clrscr();
+ distance d1,d2,total;
+ d1.getit(4,23);
+ d2.getit(5,52);
+ total=d1.sum(d2);
+ d1.printit();
+ d2.printit();
+ total.printit();
+ getch();
+}
+
+
+/*
+Output:
+
+
+Feet :4
+Inches :23
+Feet :5
+Inches :52
+Feet :15
+Inches :3
+
+*/

@@ -1,0 +1,38 @@
+// file handling
+
+#include<fstream.h>
+#include<conio.h>
+
+void main()
+ {
+  clrscr();
+  fstream fil("message.txt",ios::out);          // open file for writing
+  fil<<"jack n jill went up the hill \n";
+  fil<<"to fetch a pale of water \n";
+  fil<<"jack fell down and broke his crown \n";
+  fil<<"and jill came tumbling after \n";
+  fil.close();                                  // close file
+  ifstream ifile("message.txt");                // open file for reading
+  char text[100];
+  char ch;
+   for(int i=0;i<4;i++)
+    {
+     ifile.get(text,100);
+     ifile.get(ch);
+     cout<<text<<"\n";
+    }
+  ifile.close();                                // close file
+  getch();
+ }
+
+
+/*
+
+OUTPUT :-
+
+jack n jill went up the hill
+to fetch a pale of water
+jack fell down and broke his crown
+and jill came tumbling after
+
+*/

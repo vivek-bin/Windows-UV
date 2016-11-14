@@ -1,0 +1,43 @@
+// Anand Bindal
+//AnandBindal
+// S132E0004
+// display whether 5 terms are in AP, GP or neither.
+
+#include<iostream.h>
+void main()
+{
+  int a,b,c,d,e;
+  cout<<"\nEnter five numbers ";
+  cin>>a>>b>>c>>d>>e;
+  if(b-a==c-b && d-c == e-d && b-a == e-d)
+     cout<<"\nIt is an AP";
+  else
+  if(b/a==c/b && c/b==d/c && d/c==e/d)
+  cout<<"\nIt is a GP";
+  else
+  cout<<"\nNot in AP or GP";
+}
+
+/*
+
+Output:
+Enter five numbers 3
+5
+7
+9
+11
+
+It is an AP
+Enter five numbers 3
+6
+12
+24
+48
+It is a GP
+Enter five numbers 3
+5
+7
+24
+48
+Not in AP or GP
+*/

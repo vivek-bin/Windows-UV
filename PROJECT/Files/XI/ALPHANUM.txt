@@ -1,0 +1,29 @@
+//find if given character is alphabet-upper/lower case, number,sp. character
+#include<iostream.h>
+#include<conio.h>
+#include<ctype.h>
+void main()
+{
+clrscr();
+char chr;
+cout<<"Enter a character : ";
+cin>>chr;
+if(isalpha(chr))
+  if(islower(chr))
+    cout<<"The character is an alphabet.It is in lower case.";
+  else
+    cout<<"The character is an alphabet. It is in upper case.";
+else
+   if(isdigit(chr))
+     cout<<"The character is a number.";
+   else
+     cout<<"The character is a special character.";
+getch();
+}
+
+
+/*
+Output:
+Enter a character : &
+The character is a special character.
+*/

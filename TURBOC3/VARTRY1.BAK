@@ -1,0 +1,26 @@
+#include<iostream.h>
+#include<conio.h>
+#define g(a,b) a##b
+#define h(a,b) g(a,b)
+int f(int i)
+{
+return i;
+}
+
+char fv(char c)
+{
+return c;
+}
+
+void main()
+{
+char va='a';
+int a0=11,a1=22,a2=33,a3=44,a4=55,a5=66,a6=77,a7=88;
+for(int i=0;i<7;i++)
+{
+cout<<h(fv(va),f(i));
+
+cout<<endl;
+}
+getch();
+}

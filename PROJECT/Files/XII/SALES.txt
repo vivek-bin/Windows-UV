@@ -1,0 +1,166 @@
+//to impliment OOPs-classes
+#include<iostream.h>
+#include<conio.h>
+
+class sales
+ {
+   long code;
+   double target,tot,comm;
+   char grade;
+  public:
+   int id;
+   sales()
+   {
+    code=0;
+    target=0.0;
+    tot=0.0;
+    comm=0.0;
+    grade=' ';
+   }
+
+  void init()
+  {
+   cout<<"Enter code : ";
+   cin>>code;
+   cout<<"Enter id : ";
+   cin>>id;
+   cout<<"Enter target : ";
+   cin>>target;
+  }
+
+  void addsale()
+  {
+   double curr,prev;
+   cout<<"Enter current balance : ";
+   cin>>curr;
+   cout<<"Enter previous balance : ";
+   cin>>prev;
+   tot=prev+curr;
+  }
+
+  void display()
+  {
+   if(tot==0)
+     cout<<"Total sales not entered";
+   else
+     {
+      cout<<"\nID : "<<id;
+      cout<<"\n Code : "<<code;
+      cout<<"\nTarget : "<<target;
+      cout<<"\nTotal : "<<tot;
+      cout<<"\nCommission : "<<comm;
+      cout<<"\nGrade : "<<grade;
+     }
+  }
+
+  void perform()
+  {
+   if(tot>target)
+      grade='E';
+   else if(tot==target)
+	 grade='G';
+      else
+	 grade='P';
+}
+
+void sales::calcomm();
+};
+
+  void sales::calcomm()
+  {
+   switch(grade)
+   {
+    case 'E':comm=(0.25*(tot-target))+(target/10);
+	     break;
+    case 'G':comm=target/10;
+	     break;
+    case 'P':comm=0;
+	     break;
+   }
+  }
+
+
+void main()
+{
+clrscr();
+sales s[5];
+int tempid,i,pos=-1,ch;
+cout<<"Enter the initial values : \n\n";
+for(i=0;i<3;i++)
+ s[i].init();
+cout<<"\n\nEnter the ID : ";
+cin>>tempid;
+for(i=0;i<3;i++)
+ {if(tempid==s[i].id)
+   pos=i;}
+if(pos==-1)
+  cout<<"\nID not found";
+else
+  {
+   cout<<"\n\nMenu\n\n";
+   cout<<"1. Add sales\n";
+   cout<<"2. Calculate commission\n";
+   cout<<"3. Display\n";
+   cout<<"4. Exit\n";
+   cout<<"\nEnter your choice : ";
+   cin>>ch;
+   switch(ch)
+   {
+   case 1:s[pos].addsale();
+	  break;
+   case 2:s[pos].addsale();
+	  s[pos].perform();
+	  s[pos].calcomm();
+	  break;
+   case 3:s[pos].addsale();
+	  s[pos].perform();
+	  s[pos].calcomm();
+	  s[pos].display();
+	  break;
+   case 4:cout<<"\nExitting";
+	  break;
+   default:cout<<"Wrong choice";
+	  break;
+   }
+  }
+getch();
+}
+
+
+/*
+Output:
+Enter the initial values :
+
+Enter code : 213
+Enter id : 5643
+Enter target : 563.63
+Enter code : 245
+Enter id : 524
+Enter target : 7434.35
+Enter code : 244
+Enter id : 86
+Enter target : 1243.74
+
+
+Enter the ID : 524
+
+
+Menu
+
+1. Add sales
+2. Calculate commission
+3. Display
+4. Exit
+
+Enter your choice : 3
+Enter current balance : 341
+Enter previous balance : 7635
+
+ID : 524
+ Code : 245
+Target : 7434.35
+Total : 7976
+Commission : 878.8475
+Grade : E
+
+*/

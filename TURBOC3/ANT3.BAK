@@ -1,0 +1,23 @@
+
+#include<iostream.h>
+#include<conio.h>
+void main(){
+clrscr();
+int y=0;
+ 
+
+while(y<=10)
+{   int x =1;
+    do
+    {  x++;
+       if(y%x==0) 
+           cout<<"*";
+       if(x%3==2) 
+           cout<<"#";
+    }while(x<3);
+    y+=6;cout<<"%";
+ }
+ getch();
+}
+
+

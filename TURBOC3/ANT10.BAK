@@ -1,0 +1,20 @@
+// Anand Bindal
+// S132E0004
+// display whether or not a number is prime
+#include<iostream.h>
+void main()
+{
+  int n,i,p=0;
+  cout<<"\nEnter a number ";
+  cin>>n;
+
+  for(i=2;i<n;i++)
+  {
+    if(n%i==0)
+      p=1;
+  }
+  if(p==0)
+  cout<<"\n"<<n<<" is a prime number";
+  else
+  cout<<"\n"<<n<<" is not a prime number";
+}

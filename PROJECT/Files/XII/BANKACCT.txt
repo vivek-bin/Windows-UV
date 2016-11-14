@@ -1,0 +1,239 @@
+//TO IMPLIMENT OOPS CONCEPT
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+#include<string.h>
+
+class customer
+{
+  long accno,bal;
+  char name[20],type[10];
+ public:
+  void initial();
+  void showbal();
+  void display();
+  void withdraw();
+  void deposit();
+  int check(int &a,char b[]);
+};
+
+void customer::initial()
+{
+ cout<<"Enter name:";
+ gets(name);
+ cout<<"Enter account type(savings/current):";
+ gets(type);
+ cout<<"Enter accont number:";
+ cin>>accno;
+ do
+  {
+   cout<<"Enter initial balance :";
+   cin>>bal;
+   if(bal<5000)
+     cout<<"Initial balance must be >=5000. Enter again\n";
+  }while(bal<5000);
+}
+
+void customer::showbal()
+{
+  cout<<"Account no :"<<accno;
+  cout<<"\nBalance is "<<bal;
+}
+
+void customer::display()
+{
+  cout<<"\nName :"<<name;
+  cout<<"\nAccount type :"<<type;
+  cout<<"\nAccount no :"<<accno;
+  cout<<"\nBalance is "<<bal;
+}
+
+void customer::deposit()
+{
+  int dep;
+  cout<<"\nEnter amount to be deposited : ";
+  cin>>dep;
+  bal+=dep;
+}
+
+void customer::withdraw()
+{
+  int wit;
+  do
+  {
+    cout<<"Enter amount to be withdrawn : ";
+    cin>>wit;
+    if((bal-wit)<1000)
+      cout<<"Minimum balance must be 1000. Enter again\n";
+   }while((bal-wit)<1000);
+  bal-=wit;
+}
+
+void choice(long &a,char b[])
+{
+ int ch;
+ do
+ {
+  cout<<"Do you want to enter (1,2):\n";
+  cout<<"\n1. Account number\n";
+  cout<<"2.Name";
+  cin>>ch;
+ }while((ch>2)||(ch<1));
+ switch(ch)
+  {
+   case 1:cout<<"Enter account number";
+	  cin>>a;
+	  break;
+   case 2:cout<<"Enter name";
+	  gets(b);
+	  break;
+   default:cout<<"Wrong choice";
+	   break;
+  }
+}
+
+int customer::check(int &a,char b[])
+{
+  if((a==accno)||(strcmpi(b,name)))
+   return 1;
+  else
+   return 0;
+}
+
+void main()
+{
+ clrscr();
+ customer cust[5];
+ long account;
+ char prsn[20];
+ int ch,ab,flag;
+ for(int i=0;i<5;i++)
+   cust[i].initial();
+ do{
+  cout<<"\n\nMenu";
+  cout<<"\n1.Deposit";
+  cout<<"\n2.Withdraw";
+  cout<<"\n3.display";
+  cout<<"\n4.Check balance";
+  cout<<"\n5.Exit";
+  cout<<"\nEnter your choice :";
+  cin>>ch;
+  switch(ch)
+  {
+    case 1:choice(account,prsn);
+	  for(i=0;i<5;i++)
+	   {
+	    ab=cust[i].check(account,prsn);
+	    if(ab==1)
+	     {
+	      cust[i].deposit();
+	      break;
+	     }
+	   }
+	  if(ab==0)
+	    cout<<"Error.Member not found";
+	  break;
+    case 2:choice(account,prsn);
+	  for(i=0;i<5;i++)
+	   {
+	    ab=cust[i].check(account,prsn);
+	    if(ab==1)
+	     {
+	      cust[i].withdraw();
+	      break;
+	     }
+	   }
+	  if(ab==0)
+	    cout<<"Error.Member not found";
+	  break;
+    case 3:for(i=0;i<5;i++)
+	    cust[i].display();
+	  break;
+    case 4:choice(account,prsn);
+	  for(i=0;i<5;i++)
+	   {
+	    ab=cust[i].check(account,prsn);
+	    if(ab==1)
+	     {
+	      cust[i].showbal();
+	      break;
+	     }
+	   }
+	   if(ab==0)
+	    cout<<"Error.Member not found";
+	   break;
+    case 5:flag=0;
+	  break;
+    default:cout<<"Wrong choice\n";
+	   break;
+  }
+ }while(flag);
+ getch();
+}
+
+
+/*
+Output:
+
+Enter name :yutfdg
+Enter account type :current
+Enter account no :7896
+Enter balance is 7765
+Enter name :jkvj
+Enter account type :sav
+Enter account no :8687
+Enter balance is 54562
+Enter name :jgfhjc
+Enter account type :current
+Enter account no :678
+Enter balance is 6543
+Enter name:jffj
+Enter account type(savings/current):sav
+Enter accont number:687
+Enter initial balance :8865
+Enter name:hgcfjgc
+Enter account type(savings/current):curr
+Enter accont number:5743
+Enter initial balance :677
+Initial balance must be >=5000. Enter again
+Enter initial balance :5467
+
+
+Menu
+1.Deposit
+2.Withdraw
+3.display
+4.Check balance
+5.Exit
+Enter your choice :3
+
+Name :yutfdg
+Account type :current
+Account no :7896
+Balance is 7765
+Name :jkvj
+Account type :sav
+Account no :8687
+Balance is 54562
+Name :jgfhjc
+Account type :current
+Account no :678
+Balance is 6543
+Name :jffj
+Account type :sav
+Account no :687
+Balance is 8865
+Name :hgcfjgc
+Account type :curr
+Account no :5743
+Balance is 5467
+
+Menu
+1.Deposit
+2.Withdraw
+3.display
+4.Check balance
+5.Exit
+Enter your choice :5
+
+*/

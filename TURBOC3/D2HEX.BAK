@@ -1,0 +1,32 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdlib.h>
+void main(){
+ int n,r, b[16];
+ char s[17];
+ clrscr();
+ cout<<"Enter number";
+ cin>>n;
+ for(int i=0;n>0;i++){
+  r=n%16;
+  switch(r){
+   case 10:b[i]='A'; break;
+   case 11:b[i]='B'; break;
+   case 12:b[i]='C'; break;
+   case 13:b[i]='D'; break;
+   case 14:b[i]='E'; break;
+   case 15:b[i]='F'; break;
+   default:b[i]=r; break ;
+  }
+  n=n/16;
+ }
+ for(--i; i>=0;i--)
+  cout<<b[i];
+ getch();
+ cout<<"enter another number";
+ cin>>n;
+
+ itoa(n,s,16);
+ cout<<s;
+ getch();
+}

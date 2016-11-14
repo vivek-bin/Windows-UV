@@ -1,0 +1,33 @@
+#include<iostream.h>
+#include<conio.h>
+#include<process.h>
+#include<math.h>
+void main()
+{
+clrscr();
+double a,fa,b,fb,x,fx,er,fn;
+cout<<"Finding the root for equation 3x^3-4x^2+x-3";
+cout<<"\nEnter the value of lower interval: ";cin>>a;
+cout<<"\nEnter the value of upper interval: ";cin>>b;
+fa=3*a*a*a-4*a*a+a-3;
+fb=3*b*b*b-4*b*b+b-3;
+if(fa*fb>0)
+	{
+	cout<<"There are no roots of equation in "<<a<<" and "<<b;
+	getch();
+	exit(0);
+	}
+cout<<"Enter the value of the error: ";cin>>er;
+while ((b-a)>er)
+{
+x=(fa*b-fb*a)/(fa-fb);
+fx=3*x*x*x-4*x*x+x-3;
+if(fx*fa>0)
+{a=x;
+}
+else
+b=x;
+}
+cout<<"The root of the equation within error of "<<er<<" is "<<x;
+getch();
+}

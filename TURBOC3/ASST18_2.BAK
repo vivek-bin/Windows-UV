@@ -1,0 +1,25 @@
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+  int a,b,s;
+  int fn(int,int=0);
+  clrscr();
+  cout<<"Enter a number";
+  cin>>a;
+  cout<<"Enter another number ";
+  cin>>b;
+  s=fn(a,b);
+  cout<<"\n\nThe smaller value= "<<s;
+  s=fn(a);
+  cout<<"\n\nComparing with 0, the smaller value = "<<s;
+  getch();
+}
+int fn(int x,int y)
+{  if(x<y)
+    return x;
+   else
+    return y;
+}
+
+

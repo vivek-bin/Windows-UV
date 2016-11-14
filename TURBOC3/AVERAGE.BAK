@@ -1,0 +1,22 @@
+// Anand Bindal
+// S132E0004
+// display the area of a circle
+
+#include<iostream.h>
+void main()
+{
+  const float pi=3.1416;
+  int ar, r=12;
+  ar=pi*r*r;
+  cout<<"\nArea of the circle = "<<ar;
+}
+
+
+
+
+
+
+
+Output:
+
+Area of the circle = 452

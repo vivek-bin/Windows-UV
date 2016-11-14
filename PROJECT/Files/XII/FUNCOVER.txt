@@ -1,0 +1,99 @@
+//function overloading
+#include<iostream.h>
+#include<conio.h>
+#include<math.h>
+
+class areas
+{
+  float a,b,c;
+ public:
+  float area(float a)
+  {
+    float ar=a*a;
+    return ar;
+  }
+
+  void area(float l,float b)
+  {
+   float ar=l*b;
+   cout<<"Area of the rectangle is : "<<ar;
+  }
+
+  void area(float a,float b,float c)
+  {
+   float s=(a+b+c)/2;
+   float ar=sqrt(s*(s-a)*(s-b)*(s-c));
+   cout<<"Area of the triangle is : "<<ar;
+  }
+
+  void sqar()
+  {
+   cout<<"Enter side : ";
+   cin>>a;
+   cout<<"Area of square is : "<<area(a);
+  }
+
+  void recar()
+  {
+   cout<<"Enter length : ";
+   cin>>a;
+   cout<<"Enter breadth : ";
+   cin>>b;
+   area(a,b);
+  }
+
+  void triar()
+  {
+   cout<<"Enter side 1: ";
+   cin>>a;
+   cout<<"Enter side 2: ";
+   cin>>b;
+   cout<<"Enter side 3: ";
+   cin>>c;
+    if(((a+b)<c)||((b+c)<a)||((a+c)<b))
+     cout<<"Triangle of given lengths is not possible";
+    else
+     area(a,b,c);
+   }
+};
+
+void main()
+{
+clrscr();
+areas ar1;
+int ch;
+cout<<"Menu\n";
+cout<<"\n1. Area of square";
+cout<<"\n2. Area of rectangle";
+cout<<"\n3. Area of triangle";
+cout<<"\n\nEnter your choice : ";
+cin>>ch;
+switch(ch)
+{
+case 1:ar1.sqar();
+       break;
+case 2:ar1.recar();
+       break;
+case 3:ar1.triar();
+       break;
+default:cout<<"Wrong choice";
+	break;
+}
+getch();
+}
+
+/*
+Output:
+
+Menu
+
+1. Area of square
+2. Area of rectangle
+3. Area of triangle
+
+Enter your choice : 3
+Enter side 1: 3
+Enter side 2: 4
+Enter side 3: 5
+Area of the triangle is : 6
+*/

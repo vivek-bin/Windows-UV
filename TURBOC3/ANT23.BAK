@@ -1,0 +1,30 @@
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+  int a,b,ans;
+  char op;
+  clrscr();
+  cout<<"Enter a number";
+  cin>>a;
+  cout<<"Enter another number ";
+  cin>>b;
+  cout<<"Enter an operator + - * / ";
+  cin>>op;
+  int Calc(int,int,char);
+  ans=Calc(int,int,char);
+  cout<<"Answer="<<ans;
+  getch();
+}
+int Calc(int a, int b, char op){
+  int v;
+  switch (op){
+     case '+' : v=a+b;break;
+     case '-' : v=a-b;break;
+     case '*' : v=a*b;break;
+     case '/' : v=a/b;break;
+     default: cout<<"Incorrect value";break;
+  }
+  return v;
+}
+

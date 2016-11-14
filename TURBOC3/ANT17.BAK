@@ -1,0 +1,11 @@
+#include<iostream.h>
+#include<ctype.h>   
+void main( ){
+
+   char y[ ] = {“Farewell To Arms”};
+     for( int x = 1; x < 6; ++x )
+     {    cout << y[x+1]  ; 
+          cout<<’\n’ ;          }
+}  
+
+}

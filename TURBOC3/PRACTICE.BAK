@@ -1,0 +1,30 @@
+#include<iostream.h>
+#include<conio.h>
+void main(){
+ int a,b;
+ a=5;
+ b=2;
+ while(a>0)
+ {
+    cout<<b;
+    cout<<"\n";
+    a--;
+    b--;
+ }
+ getch();
+}
+/*
+void main(){
+ int a,b;
+ a=10;
+ b=20;
+ for(int c=1;c<201;c++)
+ {
+    cout<<a<<" + "<<b<<" = "<<a+b;
+    cout<<"\n";
+    a++;
+    b--;
+ }
+ getch();
+}
+*/

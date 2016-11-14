@@ -1,0 +1,129 @@
+#include<iostream.h>
+#include<conio.h>
+#include<math.h>
+int fact(int a);
+void series1(int x, int n);
+void series2(int x, int n);
+void series3(int x, int n);
+void series4(int x, int n);
+void series5(int x, int n);
+void series6(int x, int n);
+void main()
+{
+clrscr();
+int x,n,ch;
+cout<<"Enter value of x : ";
+cin>>x;
+cout<<"Enter value of n : ";
+cin>>n;
+cout<<"        Menu\n\n";
+cout<<"1. 1+x^2/2+x^3/3....+x^n\n";
+cout<<"2. x-x^3/3+x^5/5+....+x^n/n\n";
+cout<<"3. 1+x/2!+x^3/3!+.....+x^n/2n!\n";
+cout<<"4. 1-u+1/2!*u-1/3!*u+......+(-1)^n*1/n!*u\n";
+cout<<"5. 1+x+1/2!*x^2+1/3!*x^3+1/4!*x^4+......+1/n!*u^n\n";
+cout<<"6. 1+x/1!+x^3/2!+x^5/3!+.........+x^(2n-1)/n!\n";
+cout<<"Enter choice (1-6): ";
+cin>>ch;
+switch(ch)
+{
+case 1:series1(x,n);
+       break;
+case 2:series2(x,n);
+       break;
+case 3:series3(x,n);
+       break;
+case 4:series4(x,n);
+       break;
+case 5:series5(x,n);
+       break;
+case 6:series6(x,n);
+       break;
+default:cout<<"WRONG CHOICE!!!...:(";
+	break;
+}
+getch();
+}
+
+void series1(int x, int n)
+{
+float sum=1.0,a;
+int i,nu=x;
+for(i=2;i<=n;i++,x=x*nu)
+{
+a=float(x*nu)/i;
+sum=sum+a;
+}
+cout<<"The answer is : "<<sum;
+}
+
+void series2(int x, int n)
+{
+int b=-1,d=-1;
+float sum=0.0,a;
+for(int i=1;i<2*n;i=i+2)
+{
+d=d*b;
+a=float((pow(x,i))/i)*d;
+sum=sum+a;
+}
+cout<<"The answer is : "<<sum;
+}
+
+void series3(int x,int n)
+{
+float sum=1.0,a;
+int i;
+for(i=1;i<n;i++)
+{
+a=float(pow(x,i))/fact(2*i);
+sum=sum+a;
+}
+cout<<"The answr is : "<<sum;
+}
+
+void series4(int x, int n)
+{
+float sum=1.0, a=0.0;
+int i,j=-1,k=-1;
+for(i=1;i<n;i++)
+{
+a=float(x/fact(i))*j;
+sum=sum+a;
+j=j*k;
+}
+cout<<"The answer is : "<<sum;
+}
+
+void series5(int x, int n)
+{
+float sum=1.0,a=0.0;
+int i,j=x;
+for(i=1;i<n;i++,x=x*j)
+{
+a=float(x)/fact(i);
+sum=sum+a;
+}
+cout<<"The answer is : "<<sum;
+}
+
+void series6(int x,int n)
+{
+float sum=1.0,a=0.0;
+int i,j,k,b=1;
+for(i=1;i<n;i++)
+{
+a=float(pow(x,b))/fact(i);
+sum=sum+a;
+b=b+2;
+}
+cout<<"The answer is : "<<sum;
+}
+
+int fact(int a)
+{                             ]
+int fac=1;
+for(;a>1;a--)
+fac=fac*a;
+return fac;
+}

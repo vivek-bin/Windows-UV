@@ -1,0 +1,26 @@
+#include<iostream.h>
+#include<math.h>
+#include<conio.h>
+void main()
+{
+clrscr();
+double a,b,fa,er,dfa;
+cout<<"Finding the root of 3x^3-2x^2+5x-7 using Newton Raphson method.";
+cout<<"Enter the first approximation of the root. ";cin>>a;
+fa=3*a*a*a-2*a*a+5*a-7;
+dfa=9*a*a-4*a+5;
+if(fa==0)
+{
+cout<<"The root if the equation is: "<<a;
+}
+cout<<"Enter the value of the error: ";cin>>er;
+b=a-fa/dfa;
+while(fabs(b-a)>er)
+{  a=b;
+   fa=3*a*a*a-2*a*a+5*a-7;
+   dfa=9*a*a-4*a+5;
+b=a-fa/dfa;
+//a=b;
+}
+cout<<"The root is "<<a;
+}

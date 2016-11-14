@@ -1,0 +1,33 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+#include<string.h>
+#include<process.h>
+void main()
+{
+clrscr();
+int pos=0,p,i,j,a=0,x;
+char str[30],sub[30];
+cout<<"Enter a string : ";
+gets(str);
+cout<<"Enter a sub-string : ";
+gets(sub);
+for(i=0;str[i]!='\0';i++)
+{
+if(str[i]==sub[0])
+ {
+  for(j=0,p=i;sub[j]!='\0';j++,p++)
+    if(str[p]!=sub[j])
+      break;
+    if(j==strlen(sub))
+      {
+       pos=i+1;
+       i=strlen(str);
+      }
+ }
+}if(pos>0)
+cout<<"The string was found at "<<pos<<"th position";
+else
+cout<<"The string was not found";
+getch();
+}

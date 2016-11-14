@@ -1,0 +1,21 @@
+#include<iostream.h>
+#include<conio.h>
+#include<process.h>
+#include<math.h>
+void main()
+{
+clrscr();
+double a,b,h,x,fa,fb,fx,ans;
+cout<<"Approximating the integral of 3x^3-4x^2-3.";
+cout<<"Enter the value of lower limit: ";cin>>a;
+cout<<"Enter the value of upper limit: ";cin>>b;
+h=(b-a)/2;
+x=a+h;
+fa=3*a*a*a-4*a*a-3;
+fb=3*b*b*b-4*b*b-3;
+fx=3*x*x*x-4*x*x-3;
+ans=(h/3)*(fa+4*fx+fb);
+
+cout<<"The approximate integral of the function between "<<a<<" and "<<b<<"is "<<ans;
+getch();
+}

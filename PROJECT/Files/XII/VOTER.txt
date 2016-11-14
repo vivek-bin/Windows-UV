@@ -1,0 +1,102 @@
+//nested structures
+#include<conio.h>
+#include<stdio.h>
+#include<iostream.h>
+
+struct address
+{
+  char house[15],area[10],state[10],city[10];
+  long pin;
+};
+
+struct voter
+{
+  int age,id;
+  char name[15];
+  address add;
+};
+
+void input(voter v[10],int i)
+{
+  cout<<"Enter name : ";
+  cin>>v[i].name;
+  cout<<"Enter age : ";
+  cin>>v[i].age;
+  cout<<"Enter id : ";
+  cin>>v[i].id;
+  cout<<"Enter address :-  \n";
+  cout<<"      Enter house number : ";
+  cin>>v[i].add.house;
+  cout<<"      Enter area : ";
+  cin>>v[i].add.area;
+  cout<<"      Enter state : ";
+  cin>>v[i].add.state;
+  cout<<"      Enter city : ";
+  cin>>v[i].add.city;
+  cout<<"      Enter pin code : ";
+  cin>>v[i].add.pin;
+}
+
+void output(voter v[10],int i)
+{
+  cout<<"\nThe name is : "<<v[i].name;
+  cout<<"\nThe age is : "<<v[i].age;
+  cout<<"\nThe id is : "<<v[i].id;
+  cout<<"\nThe address is :- \n";
+  cout<<"\n      The house number is : "<<v[i].add.house;
+  cout<<"\n      The area is : "<<v[i].add.area;
+  cout<<"\n      The state is : "<<v[i].add.state;
+  cout<<"\n      The city is : "<<v[i].add.city;
+  cout<<"\n      The pin code is : "<<v[i].add.pin;
+}
+
+void main()
+{
+clrscr();
+int i,n;
+cout<<"How many : ";
+cin>>n;
+voter v[10];
+for(i=0;i<n;i++)
+  input(v,i);
+for(i=0;i<n;i++)
+  if(v[i].age>=60)
+    output(v,i);
+getch();
+}
+
+/*
+Output:
+
+How many : 2
+Enter name : qwee
+Enter age : 23
+Enter id : 4674
+Enter address :-
+      Enter house number : 3634
+      Enter area : ydjd
+      Enter state : aras
+      Enter city : kuykmm
+      Enter pin code : 1411
+Enter name : jyrdj
+Enter age : 66
+Enter id : 4623
+Enter address :-
+      Enter house number : 457
+      Enter area : dfbnfhm
+      Enter state : asdgsr
+      Enter city : sfdg
+      Enter pin code : 3241
+
+The name is : jyrdj
+The age is : 66
+The id is : 4623
+The address is :-
+
+      The house number is : 457
+      The area is : dfbnfhm
+      The state is : asdgsr
+      The city is : sfdg
+      The pin code is : 3241
+
+*/

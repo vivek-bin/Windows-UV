@@ -1,0 +1,88 @@
+#include<iostream.h>
+#include<conio.h>
+void add(int mat1[10][10],int mat2[10][10],int n);
+void subtract(int mat1[10][10],int mat2[10][10],int n);
+void prod(int mat1[10][10],int mat2[10][10],int n);
+
+void main()
+{
+int mat1[10][10],mat2[10][10],n,ch;
+clrscr();
+cout<<"Enter size of matrix : ";
+cin>>n;
+for(int i=0;i<n;i++)
+{
+cout<<"Row no. "<<i+1<<" : ";
+for(int j=0;j<n;j++)
+cin>>mat1[i][j];
+}
+for(i=0;i<n;i++)
+{
+cout<<"Row no. "<<i+1<<" : ";
+for(int j=0;j<n;j++)
+cin>>mat2[i][j];
+}
+cout<<"\n\n\Menu\n\n";
+cout<<"1. Add terms of matrix\n";
+cout<<"2. Subtract terms of matrix\n";
+cout<<"3. Multiply terms of matrix\n";
+cout<<"Enter your choice : ";
+cin>>ch;
+switch(ch)
+{
+case 1:add(mat1,mat2,n);
+       break;
+case 2:subtract(mat1,mat2,n);
+       break;
+case 3:prod(mat1,mat2,n);
+       break;
+default:cout<<"Wrong choice";
+	break;
+}
+getch();
+}
+
+void add(int mat1[10][10],int mat2[10][10],int n)
+{
+int matsum[10][10];
+for(int i=0;i<n;i++)
+for(int j=0;j<n;j++)
+matsum[i][j]=mat1[i][j]+mat2[i][j];
+cout<<"After addition : \n";
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++)
+cout<<matsum[i][j]<<"  ";
+cout<<"\n";
+}
+}
+
+void subtract(int mat1[10][10],int mat2[10][10],int n)
+{
+int matdif[10][10];
+for(int i=0;i<n;i++)
+for(int j=0;j<n;j++)
+matdif[i][j]=mat1[i][j]+mat2[i][j];
+cout<<"After addition : \n";
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++)
+cout<<matdif[i][j]<<"  ";
+cout<<"\n";
+}
+}
+
+void prod(int mat1[10][10],int mat2[10][10],int n)
+{
+int matdif[10][10];
+for(int i=0;i<n;i++)
+for(int j=0;j<n;j++)
+matdif[i][j]=mat1[i][j]+mat2[i][j];
+cout<<"After addition : \n";
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++)
+cout<<matdif[i][j]<<"  ";
+cout<<"\n";
+}
+}

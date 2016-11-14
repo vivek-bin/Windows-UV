@@ -1,0 +1,42 @@
+//to find out the capital of some selected countries
+#include<iostream.h>
+#include<conio.h>
+#include<string.h>
+void main()
+{
+clrscr();
+char country[][30]={        "India",
+		    "Pakistan",
+		    "China",
+		    "Bangladesh",
+		    "Japan",
+		    "USA",
+		    "Sri Lanka",
+		    "Nepal",
+		    "South Africa",
+		    "Switzerland"};
+char cap[][30] = {            "Delhi",
+		    "Islamabad",
+		    "Beijing",
+		    "Dhaka",
+		    "Tokyo",
+		    "Washington DC",
+		    "Columbo",
+		    "Katmandu",
+		    "Cape Town",
+		    "Zurich"} ;
+char cname[30];
+cout<<"Enter the name of the country : ";
+cin>>cname;
+ for(int i=0;i<10;i++)
+   if(strcmpi(cname,country[i])==0)
+      cout<<"The capital is "<<cap[i];
+getch();
+}
+
+
+/*
+Output:
+Enter the name of the country : nepal
+The capital is Katmandu
+*/

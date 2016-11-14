@@ -1,0 +1,1962 @@
+#include<iostream.h>
+#include<graphics.h>
+#include<conio.h>
+#include<time.h>
+#include<fstream.h>
+#include<string.h>
+#include<dos.h>
+#include<stdio.h>
+#include<process.h>
+#include<ctype.h>
+#include<stdlib.h>
+#include"C:\PROJECT\MOUSE.cpp"
+#include"C:\PROJECT\VIVEKP.cpp"
+#include"C:\PROJECT\PERTBL.cpp"
+#include"C:\PROJECT\SKETCH.cpp"
+void winuv();
+void login();
+void taskbr();
+void desktp();
+void startbx();
+void passwrd();
+void intcalc();
+void mydoc();
+void myapps();
+void mycomp();
+
+int usroradmn=-1;
+
+class dattim                         //class to calculate date,time
+ {
+   unsigned int h,m,y,min,d,le,date,s;
+   unsigned long seciny,i;
+
+ public:
+   char da[15],tm[15];
+   void timee();
+   void datee();
+
+   void assign()               //obtain system time, calculate
+    {
+      seciny=36*24;
+      seciny*=36500;
+      time_t t;
+      i=((unsigned) time(&t));
+      h=i/3600;
+      i=i-h*3600;
+      min=i/60;
+      s=i%60;
+      y=(t/seciny);
+      t=t-y*seciny;
+      d=((t/3600)/24);
+      d=d-9;
+      y=y+1970;
+      if(y%4==0)
+	le=1;
+      else
+	le=0;
+      if(d<=31)
+       {
+	 m=1;
+	 date=d;
+       }
+       else
+	if(d<=59+le)
+	 {
+	  m=2;
+	  date=d-31;
+	 }
+	   else
+	    if(d<=90+le)
+	      {
+	       m=3;
+	       date=d-59;
+	      }
+	     else
+	       if(d<=120+le)
+		{
+		 m=4;
+		 date=d-90;
+		}
+		else
+		 if(d<=151+le)
+		 {
+		  m=5;
+		  date=d-120;
+		   }
+		     else
+		      if(d<=181+le)
+		       {
+			m=6;
+			date=d-151;
+		       }
+			else
+			 if(d<=212+le)
+			   {
+			    m=7;
+			    date=d-181;
+			   }
+			    else
+			     if(d<=243+le)
+			      {
+			       m=8;
+			       date=d-212;
+			      }
+			       else
+				if(d<=273+le)
+				 {
+				  m=9;
+				  date=d-243;
+				 }
+				  else
+				   if(d<=304+le)
+				   {
+				    m=10;
+				    date=d-273;
+				   }
+				    else
+				   if(d<=334+le)
+				    {
+				     m=11;
+				     date=d-304;
+				    }
+				     else
+				     {
+				      m=12;
+				      date=d-334;
+				     }
+
+      timee();
+      datee();
+    }
+
+};
+
+   void dattim::datee()               //write date to string
+    {
+      int a,i=0,b=0;
+      char ch[15];
+
+      while(y>0)
+       {
+	 a=y%10;
+	 y/=10;
+	 a+=48;
+	 da[i++]=(char)a;
+	 b++;
+       }
+
+      while(b<4)
+	da[i++]='0';
+      da[i++]='/';
+
+      while(m>0)
+      {
+	a=m%10;
+	m/=10;
+	a+=48;
+	da[i++]=(char)a;
+      }
+      da[i++]='/';
+
+      while(date>0)
+       {
+	 a=date%10;
+	 date/=10;
+	 a+=48;
+	 da[i++]=(char)a;
+       }
+      da[i]='\0';
+      strcpy(ch,da);
+
+      int len=strlen(ch);
+      for(i=0,len--;len>=0;i++,len--)
+	da[i]=ch[len];
+      da[i]='\0';
+    }
+
+
+   void dattim::timee()            //write time to string
+    {
+      int a,i=0;
+      char ch[15];
+      while(s>0)
+       {
+	 a=s%10;
+	 s/=10;
+	 a+=48;
+	 tm[i++]=(char)a;
+       }
+
+      tm[i++]=':';
+
+      while(min>0)
+       {
+	 a=min%10;
+	 min/=10;
+	 a+=48;
+	 tm[i++]=(char)a;
+       }
+      tm[i++]=':';
+
+      while(h>0)
+       {
+	 a=h%10;
+	 h/=10;
+	 a+=48;
+	 tm[i++]=(char)a;
+       }
+      tm[i]='\0';
+      strcpy(ch,tm);
+
+      int len=strlen(ch);
+      for(i=0,len--;len>=0;i++,len--)
+	tm[i]=ch[len];
+      tm[i]='\0';
+    }
+
+
+
+
+
+void winuv()              //first screen, display screen
+ {
+   clrscr();
+   cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+   cout<<"\n\t  ³       ³                                  ³    ³ ³    ³ ";
+   cout<<"\n\t  ³       ³            ³  ___         ____   ³    ³ ³    ³ ";
+   cout<<"\n\t  ³   ³   ³ ³ ³ÄÄÄ. .ÄÄ³ ³   ³ ³   ³ ³___    ³    ³  \\  /  ";
+   cout<<"\n\t  ³___³___³ ³ ³   ³ ³__³ ³___³ ³_³_³ ____³   ³____³   \\/    ";
+   cout<<"\n\n\n\t\t\t\t";
+   cout<<"LOADING....";
+   for(int i=0;i<3;i++)
+    {
+      gotoxy(33,30);
+      delay(240);
+      cout<<" ±        ";
+      gotoxy(33,30);
+      delay(240);
+      cout<<" ±±       ";
+      gotoxy(33,30);
+      delay(240);
+      cout<<" ±±±      ";
+      gotoxy(33,30);
+      delay(240);
+      cout<<" ±±±±     ";
+      gotoxy(33,30);
+      delay(240);
+      cout<<" ±±±±±    ";
+      gotoxy(33,30);
+      delay(240);
+      cout<<" ±±±±±±   ";
+      gotoxy(33,30);
+      delay(240);
+      cout<<" ±±±±±±±  ";
+      gotoxy(33,30);
+      delay(240);
+      cout<<" ±±±±±±±± ";
+      gotoxy(33,30);
+      delay(240);
+      cout<<" ±±±±±±±±±";
+    }
+   gotoxy(33,30);
+   delay(240);
+   cout<<" ~~~~~~~~~";
+   getch();
+ }
+
+
+void shtdwn()            //end, screen after shut down
+ {
+   clrscr();
+   gotoxy(28,22);
+   cout<<"WINDOWS UV IS SHUTTING DOWN...";
+   getch();
+   exit(0);
+ }
+
+
+void login()              //options for admin, guest
+ {
+   clrscr();
+   int i=0;
+   char ch;
+   cout<<"\n\n\n\n";
+    for(;i<79;i++)
+      cout<<"Ä";
+   cout<<"\n";
+   for(i=0;i<79;i++)
+    {
+      gotoxy(i+2,46);
+      cout<<"Ä";
+    }
+   for(i=0;i<38;i++)
+    {
+      gotoxy(36,i+7);
+      cout<<"³";
+    }
+
+   gotoxy(15,22);
+   cout<<"WELCOME TO";
+   gotoxy(16,25);
+   cout<<"WINDOWS";
+   gotoxy(45,23);
+   cout<<"1. ADMINISTRATOR";
+   gotoxy(45,25);
+   cout<<"2. GUEST USER";
+   gotoxy(45,27);
+   cout<<"3. SHUT DOWN";
+
+   do
+    {
+     gotoxy(45,31);
+     cout<<"¯          ";
+     gotoxy(48,31);
+     cin>>ch;
+    }while((ch!='3')&&(ch!='1')&&(ch!='2'));
+
+   if(ch=='2')
+      usroradmn=2;
+    else
+      if(ch=='1')
+	  passwrd();
+	else
+	  shtdwn();
+ }
+
+
+void taskbr()                //taskbar containing date, time
+ {                           //start menu
+   dattim dt;
+   setcolor(11);
+   rectangle(0,455,638,480);
+   setfillstyle(SOLID_FILL,1);
+   floodfill(1,456,11);
+
+   line(0,455,0,480);
+   line(100,455,100,480);
+   line(550,455,550,480);
+
+   settextstyle(8,0,1);
+   setcolor(15);
+   outtextxy(9,455,"(S)TART");
+   dt.assign();
+   settextstyle(2,0,4);
+
+   outtextxy(555,458,dt.da);
+   outtextxy(555,468,dt.tm);
+}
+
+void passwrd()               //for administrator,
+ {                           //accepting,checking password
+   int i=0,b;
+   char ch,usrnm[20],pas[20],retry;
+   do
+    {
+      clrscr();
+      cout<<"\n\n\n\n";
+       for(i=0;i<79;i++)
+	 cout<<"Ä";
+      cout<<"\n";
+      for(i=0;i<79;i++)
+       {
+	 gotoxy(i+2,46);
+	 cout<<"Ä";
+       }
+      for(i=0;i<38;i++)
+       {
+	 gotoxy(36,i+7);
+	 cout<<"³";
+       }
+      gotoxy(15,22);
+      cout<<"WELCOME TO";
+      gotoxy(16,25);
+      cout<<"WINDOWS";
+
+      gotoxy(45,24);
+      cout<<"Enter Username : ";
+      gotoxy(45,26);
+      cout<<"Enter Password : ";
+      gotoxy(61,24);
+      gets(usrnm);
+      gotoxy(61,26);
+      i=0;
+
+      do
+       {
+	 ch=getch();
+	 b=ch;
+	 if((b!=13)&&(b!=8))
+	  {
+	    putch('*');
+	    pas[i++]=ch;
+	  }
+	 else if((i>0)&&(b==8))
+	       {
+		 i--;
+		 gotoxy(61+i,26);
+		 cout<<"  ";
+		 gotoxy(61+i,26);
+	       }
+    }
+   while((i<19)&&(b!=13));
+
+   pas[i]='\0';
+
+   if(strcmpi(pas,"vivek")!=0)
+    {
+      do
+	{
+	  gotoxy(45,30);
+	  cout<<" Try Again(y,n)?     ";
+	  gotoxy(63,30);
+	  cin>>retry;
+	}while((retry!='y')&&(retry!='Y')&&(retry!='n')&&(retry!='N'));
+    }
+   else
+    {
+      cout<<"\n\n    Done";
+      usroradmn=1;
+    }
+   }
+   while((strcmpi(pas,"vivek")!=0)&&((retry=='y')||(retry=='Y')));
+   if((retry=='n')||(retry=='N'))
+     login();
+ }
+
+
+
+struct wrdmean           // struct for words.dat
+  {
+    char wrd[20],meaning[60];
+  }w;
+
+
+
+void wrdsrch()          //search for meaning of entered word
+ {
+   char word[20];
+   int flag=1;
+   cleardevice();
+   floodfill(20,20,11);
+   settextstyle(4,0,4);
+   outtextxy(210,30,"SEARCHING...");
+   settextstyle(2,0,7);
+   outtextxy(80,200,"Enter word to be searched :");
+   gotoxy(53,14);
+   cout<<"            ";
+   gotoxy(54,14);
+   cin>>word;
+
+   ifstream ifil("C:\\project\\words.dat",ios::binary);
+   ifil.read((char*)&w,sizeof(wrdmean));
+   settextstyle(1,0,3);
+
+   while(ifil)
+    {
+      if(strcmpi(w.wrd,word)==0)
+       {
+	 outtextxy(180,270,w.meaning);
+	 flag=0;
+	 break;
+       }
+
+      ifil.read((char*)&w,sizeof(wrdmean));
+    }
+   if(flag)
+   outtextxy(200,270,"Word Not Found");
+ }
+
+
+void wrdadd()                  //accepting new word and meaning
+ {
+   cleardevice();
+   floodfill(20,20,11);
+   settextstyle(4,0,4);
+   outtextxy(210,30,"ADD NEW WORD");
+   settextstyle(2,0,7);
+   outtextxy(80,200,"Enter the new word :");
+   outtextxy(80,250,"Enter the meaning :");
+   gotoxy(40,17);
+   cout<<"                                      ";
+   gotoxy(40,14);
+   cout<<"               ";
+   gotoxy(41,14);
+   cin>>w.wrd;
+   gotoxy(41,17);
+   gets(w.meaning);
+
+   ofstream ofil("c:\\project\\words.dat",ios::binary|ios::app);
+   ofil.write((char*)&w,sizeof(wrdmean));
+   ofil.close();
+ }
+
+void wrdedt()                   //edit meaning of existing word
+ {
+   char tmpword[20];
+   int flag=1;
+   cleardevice();
+   floodfill(20,20,11);
+   settextstyle(4,0,4);
+   outtextxy(210,30,"EDIT MEANING");
+   settextstyle(2,0,7);
+   outtextxy(80,200,"Enter the word :");
+   gotoxy(35,14);
+   cout<<"               ";
+   gotoxy(36,14);
+   cin>>tmpword;
+
+   ifstream iffl("c:\\project\\words.dat",ios::binary);
+   ofstream offl("c:\\project\\tempwrds.dat",ios::binary);
+   iffl.read((char*)&w,sizeof(wrdmean));
+   while(iffl)
+    {
+      if(strcmpi(tmpword,w.wrd)!=0)
+	 offl.write((char*)&w,sizeof(wrdmean));
+      else
+       {
+	  outtextxy(80,250,"Enter new meaning :");
+	  gotoxy(40,17);
+	  cout<<"                                      ";
+	  gotoxy(41,17);
+	  gets(w.meaning);
+	  offl.write((char*)&w,sizeof(wrdmean));
+	  flag=0;
+       }
+
+      iffl.read((char*)&w,sizeof(wrdmean));
+    }
+
+   iffl.close();
+   offl.close();
+
+   if(flag)
+     outtextxy(220,270,"Word not found ");
+   else
+     outtextxy(220,270,"Meaning changed");
+
+   remove("c:\\project\\words.dat");
+   rename("c:\\project\\tempwrds.dat","c:\\project\\words.dat");
+}
+
+
+void wrddel()                  //delete an existing word and its meaning
+ {
+   char tmpword[20];
+   int flag=1;
+   cleardevice();
+   floodfill(20,20,11);
+   settextstyle(4,0,4);
+   outtextxy(210,30,"REMOVE WORD...");
+   settextstyle(2,0,7);
+   outtextxy(80,200,"Enter the word :");
+   gotoxy(35,14);
+   cout<<"               ";
+   gotoxy(36,14);
+   cin>>tmpword;
+
+   ifstream iffl("c:\\project\\words.dat",ios::binary);
+   ofstream offl("c:\\project\\tempwrds.dat",ios::binary);
+   iffl.read((char*)&w,sizeof(wrdmean));
+   while(iffl)
+    {
+      if(strcmpi(tmpword,w.wrd)!=0)
+	 offl.write((char*)&w,sizeof(wrdmean));
+      else
+	 flag=0;
+      iffl.read((char*)&w,sizeof(wrdmean));
+     }
+
+   iffl.close();
+   offl.close();
+
+   if(flag)
+     outtextxy(220,270,"Word not found ");
+   else
+     outtextxy(220,270,"Word removed");
+
+   remove("c:\\project\\words.dat");
+   rename("c:\\project\\tempwrds.dat","c:\\project\\words.dat");
+ }
+
+
+void wordsearchmain()             //word search main function
+ {
+   setbkcolor(0);
+   settextstyle(12,0,5);
+   int flag=1;
+   char ch;
+   cleardevice();
+   setfillstyle(SOLID_FILL,2);
+   floodfill(20,20,11);
+   settextstyle(4,0,8);
+   outtextxy(120,150,"Word Search");
+   getch();
+
+   do
+    {
+      setbkcolor(0);
+      settextstyle(12,0,5);
+      setfillstyle(SOLID_FILL,2);
+      cleardevice();
+      floodfill(20,20,11);
+      settextstyle(4,0,5);
+      outtextxy(220,10,"Word Search");
+      settextstyle(5,0,2);
+      outtextxy(250,130,"1. SEARCH");
+      outtextxy(250,180,"2. ADD WORD");
+      outtextxy(250,230,"3. EDIT");
+      outtextxy(250,280,"4. REMOVE");
+      outtextxy(250,350,"5. EXIT");
+      settextstyle(2,0,7);
+      outtextxy(230,428,"Enter Choice :");
+      do
+       {
+	 gotoxy(50,28);
+	 cout<<"        ";
+	 gotoxy(51,28);
+	 cin>>ch;
+       }while((ch>53)||(ch<49));
+
+      switch(ch)
+       {
+	 case '1':wrdsrch();
+		  getch();
+		  break;
+	 case '2':if(usroradmn==2)
+		   {
+		     setcolor(14);
+		     rectangle(160,230,550,280);
+		     setfillstyle(SOLID_FILL,14);
+		     floodfill(220,240,14);
+		     settextstyle(2,0,5);
+		     textcolor(4);
+		     setcolor(4);
+		     outtextxy(170,250,"THIS OPTION IS AVAILABLE ONLY FOR ADMINISTRATOR");
+		     textcolor(15);
+		     setcolor(15);
+		     getch();
+		     break;
+		   }
+		   wrdadd();
+		   getch();
+		   break;
+	 case '3':if(usroradmn==2)
+		   {
+		     setcolor(14);
+		     rectangle(160,230,550,280);
+		     setfillstyle(SOLID_FILL,14);
+		     floodfill(220,240,14);
+		     settextstyle(2,0,5);
+		     textcolor(4);
+		     setcolor(4);
+		     outtextxy(170,250,"THIS OPTION IS AVAILABLE ONLY FOR ADMINISTRATOR");
+		     textcolor(15);
+		     setcolor(15);
+		     getch();
+		     break;
+		   }
+
+		  wrdedt();
+		  getch();
+		  break;
+	 case '4':if(usroradmn==2)
+		   {
+		     setcolor(14);
+		     rectangle(160,230,550,280);
+		     setfillstyle(SOLID_FILL,14);
+		     floodfill(220,240,14);
+		     settextstyle(2,0,5);
+		     textcolor(4);
+		     setcolor(4);
+		     outtextxy(170,250,"THIS OPTION IS AVAILABLE ONLY FOR ADMINISTRATOR");
+		     textcolor(15);
+		     setcolor(15);
+		     getch();
+		     break;
+		   }
+		   wrddel();
+		   getch();
+		   break;
+	 case '5':flag=0;
+		  break;
+       }     //switch ends
+   }while(flag);
+ }       // function ends
+
+
+void xiprogs()              //display coding of programs
+ {
+   setbkcolor(0);
+   settextstyle(12,0,5);
+   cleardevice();
+   int i,flag=1,flg=0,x1,y1;
+   char ln[100],ch[15],flnm[30];
+   do
+    {
+      setbkcolor(0);
+      settextstyle(12,0,5);
+      cleardevice();
+      setfillstyle(LTSLASH_FILL,2);
+      flag=1;
+      flg=0;
+      setcolor(9);
+      floodfill(5,5,1);
+
+      line(0,35,650,35);
+      line(0,36,650,36);
+      line(0,37,650,37);
+
+      setcolor(15);
+      x1=80;
+      y1=110;
+      setfillstyle(INTERLEAVE_FILL ,15);
+
+      for(i=0;i<10;i++)               //displaying the icons
+       {
+	circle(x1,y1,24);
+	floodfill(x1,y1,15);
+	if(x1<520)
+	  x1+=95;
+	else
+	 {
+	   x1=80;
+	   y1+=100;
+	 }
+       }
+
+      settextstyle(2,0,5);                    //name of files
+      outtextxy(40,145," BUBBLSRT");
+      outtextxy(145,145,"ALPHANUM");
+      outtextxy(245,145,"CAPITAL");
+      outtextxy(335,145,"NAMESORT");
+      outtextxy(427,145,"STARDIAM");
+      outtextxy(529,145,"SWAPNO");
+      outtextxy(50,245,"VALIDATE");
+      outtextxy(145,245,"SEARCHST");
+      outtextxy(248,245,"SERIES");
+      outtextxy(340,245,"MATRIX");
+
+      settextstyle(7,0,1);
+      setcolor(14);
+      outtextxy(70,410,"Enter file name(no extension) or x(exit) :");
+      settextstyle(4,0,4);
+      outtextxy(200,0,"PROGRAM CODING");
+
+      gotoxy(62,27);
+      strcpy(flnm,"c:\\project\\files\\XI\\");
+      cout<<"            ";
+      gotoxy(63,27);
+      cin>>ch;
+
+      if(strcmpi(ch,"BUBBLESRT")==0)
+	strcat(flnm,ch);
+       else if(strcmpi(ch,"ALPHANUM")==0)
+	strcat(flnm,ch);
+       else if(strcmpi(ch,"CAPITAL")==0)
+	strcat(flnm,ch);
+       else if(strcmpi(ch,"NAMESORT")==0)
+	strcat(flnm,ch);
+       else if(strcmpi(ch,"STARDIAM")==0)
+	strcat(flnm,ch);
+       else if(strcmpi(ch,"SWAPNO")==0)
+	strcat(flnm,ch);
+       else if(strcmpi(ch,"VALIDATE")==0)
+	strcat(flnm,ch);
+       else if(strcmpi(ch,"SEARCHST")==0)
+	strcat(flnm,ch);
+       else if(strcmpi(ch,"SERIES")==0)
+	strcat(flnm,ch);
+       else if(strcmpi(ch,"MATRIX")==0)
+	strcat(flnm,ch);
+       else if(strcmpi(ch,"x")==0)
+	 flag=0;
+	    else
+	      {
+		flg=1;
+		settextstyle(3,0,1);
+		outtextxy(250,440,"File Not Found");
+	      }
+
+      if((flag)&&(flg==0))
+       {
+	cleardevice();
+	setfillstyle(LTSLASH_FILL,2);
+	floodfill(300,300,11);
+	outtextxy(200,0,"PROGRAM CODING");
+	setcolor(9);
+	floodfill(5,5,11);
+
+	line(0,35,650,35);
+	line(0,36,650,36);
+	line(0,37,650,37);
+
+	setcolor(15);
+	strcat(flnm,".txt");
+	ifstream progfl(flnm,ios::in);
+	y1=5;
+	settextstyle(2,0,4);
+	outtextxy(450,450,"Press 'ENTER' to continue");
+	settextstyle(4,0,4);
+
+	while(progfl)                   //displaying the coding
+	 {
+	   progfl.getline(ln,100);
+	   gotoxy(7,y1++);
+	   cout<<ln;
+	   if(!progfl)
+	    do
+	      {
+	      if(getch()==13)
+		break;
+	      }while(1);
+
+	   if(y1>27)
+	    {
+	      do
+	      {
+	      if(getch()==13)
+		break;
+	      }while(1);
+
+	      setfillstyle(LTSLASH_FILL,2);
+	      floodfill(200,200,9);
+	      y1=5;
+
+	      cleardevice();
+	      setfillstyle(LTSLASH_FILL,2);
+	      floodfill(300,300,11);
+	      outtextxy(200,0,"PROGRAM CODING");
+
+	      setcolor(9);
+	      floodfill(5,5,1);
+	      line(0,35,650,35);
+	      line(0,36,650,36);
+	      line(0,37,650,37);
+
+	      setcolor(15);
+	      settextstyle(2,0,4);
+	      outtextxy(450,450,"Press 'ENTER' to continue");
+	      settextstyle(4,0,4);
+	    }
+	 }
+       }
+    }while(flag);
+ }
+
+
+
+void xiiprogs()                   //display coding of programs
+ {
+   setbkcolor(0);
+   settextstyle(12,0,5);
+   cleardevice();
+
+   int i,flag=1,flg=0,x1,y1;
+   char ln[100],ch[15],flnm[30];
+
+   do
+    {
+      setbkcolor(0);
+      settextstyle(12,0,5);
+      cleardevice();
+      setfillstyle(LTSLASH_FILL,2);
+      flag=1;
+      flg=0;
+
+      setcolor(9);
+      floodfill(5,5,1);
+      line(0,35,650,35);
+      line(0,36,650,36);
+      line(0,37,650,37);
+      setcolor(15);
+
+      x1=80;
+      y1=110;
+      setfillstyle(INTERLEAVE_FILL ,15);
+
+      for(i=0;i<9;i++)              //making the icons
+       {
+	circle(x1,y1,24);
+	floodfill(x1,y1,15);
+	if(x1<520)
+	  x1+=95;
+	else
+	  {
+	    x1=80;
+	    y1+=100;
+	  }
+       }
+
+      settextstyle(2,0,5);                  //name of files
+      outtextxy(50,145,"BANKACC");
+      outtextxy(145,145,"DISTANCE");
+      outtextxy(238,145,"FILHANDL");
+      outtextxy(332,145,"FUNCOVER");
+      outtextxy(446,145,"JOIN");
+      outtextxy(536,145,"SALES");
+      outtextxy(52,245,"STUDENT");
+      outtextxy(145,245,"STUDINFO");
+      outtextxy(250,245,"VOTER");
+
+      settextstyle(7,0,1);
+      setcolor(14);
+      outtextxy(70,410,"Enter file name(no extension) or x(exit) :");
+      settextstyle(4,0,4);
+      outtextxy(200,0,"PROGRAM CODING");
+      gotoxy(62,27);
+
+      strcpy(flnm,"c:\\project\\files\\XII\\");
+      cout<<"            ";
+      gotoxy(63,27);
+      cin>>ch;
+
+      if(strcmpi(ch,"BANKACC")==0)
+	 strcat(flnm,ch);
+       else if(strcmpi(ch,"DISTANCE")==0)
+	 strcat(flnm,ch);
+       else if(strcmpi(ch,"FUNCOVER")==0)
+	 strcat(flnm,ch);
+       else if(strcmpi(ch,"FILHANDL")==0)
+	 strcat(flnm,ch);
+       else if(strcmpi(ch,"JOIN")==0)
+	 strcat(flnm,ch);
+       else if(strcmpi(ch,"SALES")==0)
+	 strcat(flnm,ch);
+       else if(strcmpi(ch,"STUDENT")==0)
+	 strcat(flnm,ch);
+       else if(strcmpi(ch,"STUDINFO")==0)
+	 strcat(flnm,ch);
+       else if(strcmpi(ch,"VOTER")==0)
+	 strcat(flnm,ch);
+       else if(strcmpi(ch,"x")==0)
+	 flag=0;
+      else
+	{
+	  flg=1;
+	  settextstyle(3,0,1);
+	  outtextxy(250,440,"File Not Found");
+	}
+
+      if((flag)&&(flg==0))
+       {
+	 cleardevice();
+	 setfillstyle(LTSLASH_FILL,2);
+	 floodfill(300,300,11);
+	 outtextxy(200,0,"PROGRAM CODING");
+	 setcolor(9);
+
+	 floodfill(5,5,1);
+	 line(0,35,650,35);
+	 line(0,36,650,36);
+	 line(0,37,650,37);
+	 setcolor(15);
+
+	 strcat(flnm,".txt");
+	 ifstream progfl(flnm,ios::in);
+	 y1=5;
+	 settextstyle(2,0,4);
+	 outtextxy(450,450,"Press 'ENTER' to continue");
+	 settextstyle(4,0,4);
+
+	 while(progfl)
+	  {
+	  progfl.getline(ln,100);            //displaying the coding
+	  gotoxy(7,y1++);
+	  cout<<ln;
+	  if(!progfl)
+	    do
+	      {
+	      if(getch()==13)
+		break;
+	      }while(1);
+	 if(y1>27)
+	  {
+	    do
+	    {
+	    if(getch()==13)
+	    break;
+	    }while(1);
+	    setfillstyle(LTSLASH_FILL,2);
+	    floodfill(200,200,9);
+	    y1=5;
+	    cleardevice();
+	    setfillstyle(LTSLASH_FILL,2);
+	    floodfill(300,300,1);
+	    outtextxy(200,0,"PROGRAM CODING");
+	    setcolor(9);
+	    floodfill(5,5,1);
+	    line(0,35,650,35);
+	    line(0,36,650,36);
+	    line(0,37,650,37);
+	    setcolor(15);
+	    settextstyle(2,0,4);
+	    outtextxy(450,450,"Press 'ENTER' to continue");
+	    settextstyle(4,0,4);
+	  }      //if ends
+	}        // while progfl ends
+      }
+   }while(flag);
+ }
+
+
+
+void desktp()              //desktop screen
+ {
+   setcolor(15);
+   settextstyle(12,0,5);
+   setfillstyle(SOLID_FILL,9);
+   floodfill(1,1,6);
+   setbkcolor(9);
+
+   int y1=0,x2=635;
+   int x1=345,y2=224;
+
+   for(;x1<635;x1+=5,y2+=4)
+     line(x1,y1,x2,y2);
+
+   setfillstyle(INTERLEAVE_FILL,15);
+   circle(480,180,35);
+   circle(370,140,15);
+   circle(400,260,15);
+   circle(340,200,10);
+   circle(280,260,7);
+
+   floodfill(480,180,15);
+   floodfill(370,140,15);
+   floodfill(400,260,15);
+   floodfill(340,200,15);
+   floodfill(280,260,15);
+
+   rectangle(300,297,550,327);
+   rectangle(301,298,549,326);
+   outtextxy(307,307,"Enter 1-6 OR S :  ");
+   line(448,321,458,321);
+
+   taskbr();
+   rectangle(30,20,70,60);
+   rectangle(40,30,60,50);
+   setfillstyle(INTERLEAVE_FILL,15);
+   floodfill(35,25,15);
+   settextstyle(2,0,4);
+   outtextxy(8,70,"1. MY COMPUTER");
+
+   rectangle(30,110,70,150);
+   rectangle(40,120,60,140);
+   floodfill(35,115,15);
+   outtextxy(8,160,"2. MY DOCUMENTS");
+
+   rectangle(30,200,70,240);
+   rectangle(40,210,60,230);
+   floodfill(35,205,15);
+   outtextxy(2,250,"3. XI PROGRAMS");
+
+   rectangle(30,290,70,330);
+   rectangle(40,300,60,320);
+   floodfill(35,295,15);
+   outtextxy(2,340,"4. XII PROGRAMS");
+
+   rectangle(30,380,70,420);
+   rectangle(40,390,60,410);
+   floodfill(35,385,15);
+   outtextxy(2,430,"5. SHORTCUT TO GAMES");
+
+   rectangle(140,20,180,60);
+   rectangle(150,30,170,50);
+   floodfill(145,25,15);
+   outtextxy(118,70,"6. SHORTCUT TO APPS");
+
+ }
+
+
+
+void startbx()             //start menu box
+ {
+   setcolor(14);
+   rectangle(3,454,139,221);
+   rectangle(2,455,140,220);
+   setfillstyle(SOLID_FILL,1);
+   floodfill(10,400,14);
+   rectangle(8,449,134,226);
+   line(8,415,134,415);
+   settextstyle(12,0,5);
+   setcolor(14);
+   outtextxy(12,240,"1. My Computer");
+   outtextxy(12,270,"2. My Documents");
+   outtextxy(12,300,"3. Programs");
+   outtextxy(12,330,"4. Calculator");
+   outtextxy(12,360,"5. Games");
+   outtextxy(12,390,"6. Applications");
+   outtextxy(12,430,"7. SHUT DOWN");
+ }
+
+
+void mycomp()           //my computer- containing apps, games, docs
+ {
+   char ch;
+   int c,y,i,flag;
+   do
+    {
+      settextstyle(12,0,5);
+      flag=1;
+      setbkcolor(0);
+      setcolor(15);
+      setfillstyle(HATCH_FILL,1);
+      floodfill(5,7,11);
+      rectangle(0,5,635,40);
+      line(0,41,635,41);
+      line(0,42,635,42);
+      rectangle(0,40,110,470);
+      settextstyle(2,0,5);
+
+      outtextxy(575,25,"(X) EXIT");
+      settextstyle(3,0,2);
+      outtextxy(260,10,"MY COMPUTER");
+      settextstyle(2,0,6);
+      rectangle(170,100,220,135);
+      line(171,102,220,102);
+      line(172,104,220,104);
+
+      line(335,215,335,255);
+      line(360,215,360,255);
+      line(315,225,375,225);
+      line(315,240,375,240);
+
+      settextstyle(4,0,7);
+      outtextxy(170,190,"A");
+      y=130;
+
+      for(i=0;i<8;i++)
+       {
+	 circle(50,y,25);
+	 c=random(13);
+	 setfillstyle(INTERLEAVE_FILL,c);
+	 floodfill(50,y,15);
+	 y+=35;
+       }
+
+      settextstyle(2,0,5);                        //menu
+      outtextxy(130,145,"1. My Documents");
+      outtextxy(130,260,"2. My Applications");
+      outtextxy(305,260,"3. My Games");
+
+      settextstyle(3,0,1);
+
+      settextstyle(1,0,1);
+      outtextxy(153,378,"Enter your choice ( 1-3 OR x-Exit ) : ");
+      do
+       {
+	 gotoxy(65,25);
+	 cout<<"   ";
+	 gotoxy(66,25);
+	 cin>>ch;
+       }while((ch!='1')&&(ch!='2')&&(ch!='3')&&(ch!='x')&&(ch!='X'));
+      switch(ch)
+       {
+	 case 'x':;
+	 case 'X':flag=0;
+		  break;
+	 case '1':cleardevice();
+		  mydoc();
+		  cleardevice();
+		  break;
+	 case '2':cleardevice();
+		  myapps();
+		  cleardevice();
+		  break;
+	 case '3':closegraph();
+		  textmode(-1);
+		  games();
+		  int driver,mode;
+		  driver=DETECT;
+		  initgraph(&driver,&mode,"\\turboc3\\bgi");
+		  break;
+	 default:break;
+       }
+    cleardevice();
+  }while(flag);
+
+}
+
+
+
+void mydoc()                     //my documents- create,
+ {                               //view, delete, rename text files
+   int i=0,x1=230,x2=270,y1=80,y2=130,b,flag=0,fl=1,f;
+   char flnms[20],ch,c,tempstr[20],fil[20],flnmpth[40];
+
+   do
+    {
+      setbkcolor(0);
+      settextstyle(12,0,5);
+
+      i=0;
+      x1=230;
+      x2=270;
+      y1=80;
+      y2=130;
+      flag=0;
+      fl=1;
+
+      setfillstyle(HATCH_FILL,1);
+      floodfill(5,7,15);
+      rectangle(0,5,635,40);
+      line(0,41,635,41);
+      line(0,42,635,42);
+      rectangle(0,40,180,470);
+      rectangle(182,42,635,472);
+
+      outtextxy(5,100,"1. Create New File");     //menu
+      outtextxy(5,140,"2. Display File");
+      outtextxy(5,180,"3. Rename File");
+      outtextxy(5,220,"4. Delete File");
+      settextstyle(2,0,5);
+      outtextxy(575,25,"(X) EXIT");
+      settextstyle(3,0,2);
+      outtextxy(260,10,"MY DOCUMENTS");
+      settextstyle(2,0,6);
+      ifstream filelst("c:\\project\\mydocfls\\fillist.txt",ios::in);
+      filelst.getline(flnms,20,'\n');
+      while(filelst)                      //display icons with file names
+       {
+	 i++;
+	 rectangle(x1,y1,x2,y2);
+	 setfillstyle(INTERLEAVE_FILL,15);
+	 floodfill(x1+2,y1+2,15);
+	 outtextxy(x1-15,y2+5,flnms);
+	 if(i<4)
+	  {
+	    x1+=100;
+	    x2+=100;
+	  }
+	 else
+	  {
+	    x1=230;
+	    x2=270;
+	    y1+=130;
+	    y2+=130;
+	    i=0;
+	  }
+       filelst.getline(flnms,20,'\n');
+      }
+      filelst.close();
+      rectangle(183,440,540,470);
+      outtextxy(190,445,"Enter your choice (1-4 or x) : ");
+      do
+       {
+	 gotoxy(62,29);
+	 cout<<"      ";
+	 gotoxy(62,29);
+	 cin>>ch;
+
+	 setcolor(13);
+	 rectangle(182,42,635,472);
+	 setcolor(15);
+	 setfillstyle(SOLID_FILL,9);
+	 floodfill(300,300,13);
+	 setfillstyle(HATCH_FILL,1);
+	 floodfill(300,300,13);
+	 rectangle(182,42,635,472);
+
+	}while((ch!='X')&&(ch!='x')&&(ch!='1')&&(ch!='2')&&(ch!='3')&&(ch!='4')&&(ch!='5'));
+
+	if((ch!='x')&&(ch!='X'))          //enter a file name
+	 {
+	  do
+	   {
+	     flag=0;
+	     outtextxy(210,204,"Enter file name(no extension):");
+	     gotoxy(63,14);
+	     cout<<"                 ";
+	     gotoxy(63,14);
+	     cin>>flnms;
+	     b=strlen(flnms);
+
+	     if(!(isalpha(flnms[0])))
+		flag=1;
+	     for(i=1;flnms[i]!='\0';i++)
+	       if(!(isalnum(flnms[i])))
+		 {
+		   flag=1;
+		   break;
+		 }
+	     if(b>8)                   //checking validity
+	      {
+		outtextxy(240,300,"File name too long");
+		getch();
+		setcolor(13);
+		rectangle(182,42,635,472);
+		setcolor(15);
+		setfillstyle(SOLID_FILL,9);
+		floodfill(300,300,13);
+		setfillstyle(HATCH_FILL,1);
+		floodfill(300,300,13);
+		rectangle(182,42,635,472);
+	      }
+	     else if(flag)
+	      {
+		outtextxy(240,300,"Invalid Filename. Enter again");
+		getch();
+		setcolor(13);
+		rectangle(182,42,635,472);
+		setcolor(15);
+		setfillstyle(SOLID_FILL,9);
+		floodfill(300,300,13);
+		setfillstyle(HATCH_FILL,1);
+		floodfill(300,300,13);
+		rectangle(182,42,635,472);
+	      }
+	   }while((b>8)||(flag));
+	 strcat(flnms,".txt");
+	}
+     switch(ch)
+      {
+	case '1':char flnmad[20];                  //new file
+		 strcpy(flnmad,flnms);
+		 strcat(flnmad,"\n");
+		 ofstream fillst("c:\\project\\mydocfls\\fillist.txt",ios::app);
+		 fillst<<flnmad;
+		 fillst.close();
+
+		 strcpy(flnmpth,"c:\\project\\mydocfls\\");
+		 strcat(flnmpth,flnms);
+		 ofstream nfl(flnmpth,ios::out);
+		 outtextxy(280,300,"File created");
+
+		 getch();
+		 setcolor(13);
+		 rectangle(182,42,635,472);
+		 setcolor(15);
+		 setfillstyle(SOLID_FILL,9);
+		 floodfill(300,300,13);
+		 setfillstyle(HATCH_FILL,1);
+		 floodfill(300,300,13);
+
+		 rectangle(182,42,635,472);
+		 outtextxy(200,70,"Press CTRL+S to save file");
+		 outtextxy(200,100,"Write something in the file :");
+
+		 int asc,nxtrw=11;        //entering data in file
+		 i=25;
+		 do
+		  {
+		    c=getch();
+		    asc=c;
+		    if(asc==8)
+		     {
+		       if((i<=25)&&(nxtrw>11))
+			{
+			  i=66;
+			  nxtrw--;
+			}
+		       if(i>25)
+			 i--;
+		       gotoxy(i,nxtrw);
+		       cout<<' ';
+		     }
+		    else
+		     {
+		       gotoxy(i++,nxtrw);
+		       cout<<c;
+		     }
+		    if((i>65)||(asc==13))
+		     {
+		       i=25;
+		       nxtrw++;
+		     }
+		   if(asc==13)
+		     nfl<<'\n';
+		   else if(asc==8)
+			   nfl<<'\b';
+			else
+			   nfl<<c;
+		   }while(asc!=19);
+		  getch();
+		  break;
+	case '2':strcpy(flnmpth,"c:\\project\\mydocfls\\");  //view file
+		 strcat(flnmpth,flnms);
+		 ifstream ifil(flnmpth);
+
+		 if(!(ifil))
+		  {
+		    outtextxy(230,300,"file not found");
+		    getch();
+		    break;
+		  }
+		 nxtrw=11;
+		 i=25;
+		 setcolor(13);
+		 rectangle(182,42,635,472);
+		 setcolor(15);
+		 setfillstyle(SOLID_FILL,9);
+		 floodfill(300,300,13);
+		 setfillstyle(HATCH_FILL,1);
+		 floodfill(300,300,13);
+		 rectangle(182,42,635,472);
+		 outtextxy(330,120,flnms);
+
+		 while(ifil)
+		  {
+		    ifil.get(c);                    //displaying file
+		    asc=c;
+		    if((i>65)||(c=='\n'))
+		     {
+		       i=25;
+		       nxtrw++;
+		     }
+		    else if(c=='\b')
+		     {
+			if((i<=25)&&(nxtrw>11))
+			 {
+			   i=66;
+			   nxtrw--;
+			 }
+			if(i>25)
+			   i--;
+			gotoxy(i,nxtrw);
+			cout<<' ';
+			continue;
+		     }
+		   else
+		    {
+		      if(asc!=19)
+		       {
+			  gotoxy(i++,nxtrw);
+			  cout<<c;
+		       }
+		    }
+		  }
+		 getch();
+		 break;
+	case '3':ifstream ifl("c:\\project\\mydocfls\\fillist.txt");
+		 f=0;                               //rename file
+
+		 while(ifl)
+		  {
+		    ifl.getline(fil,20);
+		    if(strcmpi(fil,flnms)==0)
+		       f=1;
+		  }
+		 ifl.close();
+		 if(f==0)
+		  {
+		    outtextxy(230,300,"file not found");
+		    getch();
+		    break;
+		  }
+
+		 char nwflnm[20];
+		 do
+		  {                            //accept new valid file name
+		    flag=0;
+		    setcolor(13);
+		    rectangle(182,42,635,472);
+		    setcolor(15);
+		    setfillstyle(SOLID_FILL,9);
+		    floodfill(300,300,13);
+		    setfillstyle(HATCH_FILL,1);
+		    floodfill(300,300,13);
+
+		    rectangle(182,42,635,472);
+		    outtextxy(330,120,flnms);
+		    outtextxy(210,204,"Enter new name (no extension):");
+		    gotoxy(63,14);
+		    cout<<"                 ";
+
+		    gotoxy(63,14);
+		    cin>>nwflnm;
+		    b=strlen(nwflnm);
+		    if(!(isalpha(nwflnm[0])))
+		       flag=1;
+		    for(i=1;nwflnm[i]!='\0';i++)
+		      if(!(isalnum(nwflnm[i])))
+		       {
+			 flag=1;
+			 break;
+		       }
+		    if(b>8)
+		     {
+		       outtextxy(240,300,"File name too long");
+		       getch();
+		       setcolor(13);
+		       rectangle(182,42,635,472);
+		       setcolor(15);
+		       setfillstyle(SOLID_FILL,9);
+		       floodfill(300,300,13);
+		       setfillstyle(HATCH_FILL,1);
+		       floodfill(300,300,13);
+		       rectangle(182,42,635,472);
+		     }
+		    else if(flag)
+		      {
+			outtextxy(240,300,"Invalid Filename. Enter again");
+			getch();
+			setcolor(13);
+			rectangle(182,42,635,472);
+			setcolor(15);
+			setfillstyle(SOLID_FILL,9);
+			floodfill(300,300,13);
+			setfillstyle(HATCH_FILL,1);
+			floodfill(300,300,13);
+			rectangle(182,42,635,472);
+		      }
+		 }while((b>8)||(flag));
+
+		 strcat(nwflnm,".txt");
+		 strcpy(flnmpth,"c:\\project\\mydocfls\\");
+		 strcat(flnmpth,flnms);
+
+		 char nwflnpt[40];
+		 strcpy(nwflnpt,"c:\\project\\mydocfls\\");
+		 strcat(nwflnpt,nwflnm);
+		 rename(flnmpth,nwflnpt);
+
+		 ofstream tempo("c:\\project\\mydocfls\\tempfllst.txt");
+		 ifstream fllt("c:\\project\\mydocfls\\fillist.txt");
+		 fllt.getline(tempstr,20);
+		 while(fllt)
+		  {
+		    if(strcmpi(tempstr,flnms)!=0)
+		     {
+			tempo<<tempstr;
+			tempo<<'\n';
+		     }
+		    else
+		     {
+			tempo<<nwflnm;
+			tempo<<'\n';
+		     }
+		    fllt.getline(tempstr,20);
+		  }
+
+		 fllt.close();
+		 tempo.close();
+
+		 remove("c:\\project\\mydocfls\\fillist.txt");
+		 rename("c:\\project\\mydocfls\\tempfllst.txt","c:\\project\\mydocfls\\fillist.txt");
+		 break;
+	case '4':ifstream ifl2("c:\\project\\mydocfls\\fillist.txt");
+		 f=0;
+		 while(ifl2)                       //deleting file
+		  {
+		    ifl2.getline(fil,20);
+		    if(strcmpi(fil,flnms)==0)
+		     {
+			f=1;
+		     }
+		   }
+		 ifl2.close();
+		 if(f==0)
+		  {
+		    outtextxy(230,300,"file not found");
+		    getch();
+		    break;
+		  }
+		 strcpy(flnmpth,"c:\\project\\mydocfls\\");
+		 strcat(flnmpth,flnms);
+		 remove(flnmpth);
+		 ofstream tempo2("c:\\project\\mydocfls\\tempfllst.txt");
+		 ifstream fllt2("c:\\project\\mydocfls\\fillist.txt");
+		 fllt2.getline(tempstr,20);
+		 while(fllt2)
+		  {
+		    if(strcmpi(tempstr,flnms)!=0)
+		     {
+		       tempo2<<tempstr;
+		       tempo2<<'\n';
+		     }
+		    fllt2.getline(tempstr,20);
+		   }
+
+		 fllt2.close();
+		 tempo2.close();
+
+		 remove("c:\\project\\mydocfls\\fillist.txt");
+		 rename("c:\\project\\mydocfls\\tempfllst.txt","c:\\project\\mydocfls\\fillist.txt");
+		 break;
+	case 'x':
+	case 'X':fl=0;
+		 break;
+      }
+    cleardevice();
+  }while(fl);
+ }
+
+
+
+
+void myapps()          //my apps- containing games,
+ {                     //periodic table, calculator
+   char ch;
+   int flag=1;
+   do
+    {
+      setbkcolor(0);
+      settextstyle(12,0,5);
+      flag=1;
+      setcolor(15);
+      cleardevice();
+      setfillstyle(INTERLEAVE_FILL,8);
+      floodfill(2,2,11);
+
+      line(0,40,650,40);
+      line(0,41,650,41);
+      line(0,42,650,42);
+      settextstyle(8,0,2);
+      outtextxy(210,5,"MY APPLICATIONS");
+
+      rectangle(60,100,100,150);
+      rectangle(64,104,96,120);
+
+      circle(66,125,2);
+      circle(66,135,2);
+      circle(66,145,2);
+      circle(80,125,2);
+      circle(80,135,2);
+      circle(80,145,2);
+      circle(94,125,2);
+      circle(94,135,2);
+      circle(94,145,2);
+
+      line(180,100,180,145);
+      line(180,145,280,145);
+      line(280,145,280,100);
+      line(280,100,270,100);
+      line(270,100,270,115);
+      line(270,115,240,115);
+      line(240,115,240,125);
+      line(240,125,200,125);
+      line(200,125,200,110);
+      line(200,110,190,110);
+      line(190,110,190,100);
+      line(190,100,180,100);
+
+      rectangle(380,100,390,145);
+      rectangle(390,145,430,135);
+      rectangle(430,145,440,100);
+      rectangle(405,135,415,120);
+
+      rectangle(545,80,555,140);
+      line(555,140,550,150);
+      line(550,150,545,140);
+      line(549,147,551,147);
+      line(548,80,548,140);
+      line(552,80,552,140);
+
+      setfillstyle(SOLID_FILL,15);
+      floodfill(382,102,15);
+      floodfill(392,138,15);
+      floodfill(437,123,15);
+      floodfill(410,123,15);
+      settextstyle(2,0,5);
+      outtextxy(5,160,"1. INT CALCULATOR");
+      outtextxy(170,160,"2. PERIODIC TABLE");
+      outtextxy(360,160,"3. WORD SEARCH");
+      outtextxy(516,160,"4. SKETCH");
+      settextstyle(1,0,1);
+      outtextxy(100,299,"Enter your choice( 1-4 OR x-Exit ) : ");
+      do
+       {
+	 gotoxy(57,20);
+	 cout<<"    ";
+	 gotoxy(58,20);
+	 cin>>ch;
+	}while((ch!='1')&&(ch!='2')&&(ch!='3')&&(ch!='4')&&(ch!='x')&&(ch!='X'));
+
+      switch(ch)
+       {
+	 case 'x':;
+	 case 'X':flag=0;
+		  break;
+	 case '1':intcalc();
+		  break;
+	 case '2':pertbl();
+		  break;
+	 case '3':wordsearchmain();
+		  break;
+	 case '4':sketching();
+                                      break;
+                   default:break;
+       }
+    }while(flag);
+ }
+
+
+
+void intcalc()
+ {
+   int b;
+   do
+    {
+      cleardevice();
+      setbkcolor(0);
+      setfillstyle(SOLID_FILL,0);
+      floodfill(1,1,11);
+      settextstyle(2,0,5);
+      setcolor(15);
+      rectangle(170,135,440,255);
+      line(170,160,440,160);
+
+      outtextxy(180,144,"INT CALC");
+      outtextxy(300,300,"PRESS ESC to EXIT");
+      rectangle(180,177,430,242);
+      setfillstyle(SLASH_FILL,3);
+      floodfill(173,165,15);
+      setfillstyle(SOLID_FILL,1);
+      floodfill(172,138,15);
+
+      char c,op,op2;
+      long ans,a=0;
+      int flg=0,x=25,y=15;
+      gotoxy(x,y);
+      do                          //accepting first number,operator
+       {
+	 c=getch();
+	 b=c;
+	 if((b>=48)&&(b<=57))
+	  {
+	    a=a*10+(b-48);
+	    gotoxy(x++,y);
+	    cout<<c;
+	    flg=1;
+	  }
+	 else if(((c=='+')||(c=='-')||(c=='*')||(c=='/'))&&(flg))
+	      op=c;
+	 else if((b==8)&&(flg))
+	  {
+	    gotoxy(--x,y);
+	    cout<<" ";
+	    gotoxy(x,y);
+	    a=a/10;
+	    if(a==0)
+	      flg=0;
+	  }
+	 else if(b==27)
+	    break;
+      }while(((c!='+')&&(c!='-')&&(c!='*')&&(c!='/'))||(flg==0));
+      ans=a;
+      a=0;
+      do                    //next number,operator
+       {
+	 if(b==27)
+	   break;
+	 flg=0;
+	 gotoxy(25,15);
+	 cout<<"                ";
+	 gotoxy(25,13);
+	 cout<<ans<<"          ";
+	 gotoxy(25,14);
+	 cout<<op;
+	 gotoxy(25,15);
+	 x=25;
+	 do
+	  {
+	    c=getch();
+	    b=c;
+	    if((b>=48)&&(b<=57))
+	      {
+		a=a*10+(b-48);
+		gotoxy(x++,y);
+		flg=1;
+		cout<<c<<"         ";
+	      }
+	    else if((b==8)&&(flg))
+	      {
+		gotoxy(--x,y);
+		cout<<" ";
+		gotoxy(x,y);
+		a=a/10;
+		if(a==0)
+		  flg=0;
+	      }
+	    else if(((c=='=')||(c=='+')||(c=='-')||(c=='*')||(c=='/'))&&(!flg))
+	      {
+		op=c;
+		gotoxy(25,14);
+		cout<<op;
+		c='a';
+	      }
+
+	    else if((c=='=')||(c=='+')||(c=='-')||(c=='*')||(c=='/'))
+		op2=c;
+	    else if(b==27)
+		break;
+
+	  }while((c!='=')&&(c!='+')&&(c!='-')&&(c!='*')&&(c!='/'));
+
+       if(b==27)
+	  break;
+
+       if(a)
+	 switch(op)                //calculating
+	  {
+	    case '+':ans=ans+a;
+		     op=op2;
+		     op2=' ';
+		     a=0;
+		     break;
+	    case '-':ans=ans-a;
+		     op=op2;
+		     op2=' ';
+		     a=0;
+		     break;
+	    case '*':ans=ans*a;
+		     op=op2;
+		     a=0;
+		     op2=' ';
+		     break;
+	    case '/':ans=ans/a;
+		     op=op2;
+		     a=0;
+		     op2=' ';
+		     break;
+	    case '=':
+		     break;
+	    default:break;
+	  }
+	 gotoxy(25,15);
+	 cout<<"                   ";
+	 gotoxy(25,13);
+	 cout<<"                   ";
+	 gotoxy(25,13);
+	 cout<<ans;
+	 gotoxy(25,14);
+	 cout<<op;
+	 if(c=='=')
+	   {
+	     getch();
+	     break;
+	   }
+      }while(1);
+   }while(b!=27);
+}
+
+
+
+void main()
+ {
+   textmode(64);
+   clrscr();
+   char c;
+   winuv();
+   login();
+
+   int driver,mode;
+   driver=DETECT;                       //starting graphics mode
+   initgraph(&driver,&mode,"\\turboc3");
+
+   do
+    {
+      cleardevice();                //clear screen
+      desktp();
+
+      do                                   //accepting option
+       {
+	 gotoxy(56,20);
+	 cout<<"          ";
+	 gotoxy(57,20);
+	 cin>>c;
+       }while((c!='1')&&(c!='2')&&(c!='3')&&(c!='4')&&(c!='5')&&(c!='6')&&(c!='s')&&(c!='S'));
+
+      switch(c)                   //check selection from desktop
+       {
+	 case 's':
+	 case 'S':setfillstyle(SOLID_FILL,3);             //start menu
+		  floodfill(1,470,11);
+		  settextstyle(8,0,1);
+		  setcolor(15);
+		  outtextxy(9,455,"(S)TART");
+		  setcolor(15);
+		  startbx();
+		  rectangle(300,297,550,327);
+		  rectangle(301,298,549,326);
+		  setfillstyle(SOLID_FILL,11);
+		  floodfill(305,300,14);
+		  setfillstyle(SOLID_FILL,9);
+		  floodfill(305,300,14);
+		  outtextxy(307,307,"Enter 1-7 OR S :  ");
+		  line(448,321,458,321);
+		  do
+		   {
+		     gotoxy(56,20);
+		     cout<<"          ";
+		     gotoxy(57,20);
+		     cin>>c;
+		   }while(((c>55)||(c<49))&&((c!='s')&&(c!='S')));
+
+		  switch(c)               // check selection from start menu
+		   {
+		     case 's':;
+			      break;
+		     case 'S':;
+			      break;
+		     case '1':cleardevice();
+			      setcolor(15);
+			      setbkcolor(0);
+			      mycomp();
+			      break;
+		     case '2':cleardevice();
+			      setcolor(15);
+			      setbkcolor(0);
+			      mydoc();
+			      break;
+		     case '3':cleardevice();
+			      setcolor(15);
+			      setbkcolor(0);
+			      xiprogs();
+			      break;
+		     case '4':cleardevice();
+			      setcolor(15);
+			      setbkcolor(0);
+			      intcalc();
+			      break;
+		     case '5':cleardevice();
+			      closegraph();
+			      textmode(-1);
+			      games();
+
+			      int driver,mode;
+			      driver=DETECT;
+			      initgraph(&driver,&mode,"\\turboc3");
+			      break;
+		     case '6':cleardevice();
+			      setcolor(15);
+			      setbkcolor(0);
+			      myapps();
+			      break;
+		     case '7':cleardevice();
+			      closegraph();
+			      textmode(-1);
+			      shtdwn();
+			      break;
+		     default:break;
+		   }
+		  setcolor(15);
+		  break;
+	 case '1':cleardevice();
+		  mycomp();
+		  break;
+	 case '2':cleardevice();
+		  mydoc();
+		  break;
+	 case '3':cleardevice();
+		  xiprogs();
+		  break;
+	 case '4':cleardevice();
+		  xiiprogs();
+		  break;
+	 case '5':closegraph();
+		  textmode(-1);
+		  games();
+
+		  int driver,mode;
+		  driver=DETECT;
+		  initgraph(&driver,&mode,"\\turboc3");
+		  break;
+	 case '6':cleardevice();
+		  myapps();
+		  break;
+	 default:break;
+       }
+     } while(1);
+ }

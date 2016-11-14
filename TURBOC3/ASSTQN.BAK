@@ -1,0 +1,25 @@
+#include<iostream.h>
+#include<conio.h>
+void main(){
+ clrscr();
+ int x,nm,dn,f,t,N,j,s=0;
+ cout<<"How many terms? ";
+ cin>>N;
+ cout<<"Value of x= ";
+ cin>>x;
+ nm=1;
+ f=1;
+ for(j=1;j<=N;j++)
+ {
+   nm=nm*x;
+   f=f*j;
+
+   dn=f;
+   t=nm/dn;
+   t=t*-1;
+   s=s+t;
+//   t=t*-1;
+ }
+ cout<<"\n Sum= "<<s;
+ getch();
+}

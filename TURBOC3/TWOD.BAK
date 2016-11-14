@@ -1,0 +1,37 @@
+#include<iostream.h>
+#include<conio.h>
+/*
+void main()
+{
+  int i,j,A[4][4],s=0;
+  clrscr();
+  cout<<"Enter 16 numbers";
+  for(i=0;i<4;i++)
+    for(j=0;j<4;j++)
+      cin>>A[i][j];
+  for(i=0;i<4;i++)
+    s=s+A[i][i];
+  cout<<"Sum of diagonal elements= "<<s;
+  getch();
+}
+*/
+
+ void main()
+{
+  int i,j,A[4][4];
+  clrscr();
+  cout<<"Enter 16 numbers";
+  for(i=0;i<4;i++)
+    for(j=0;j<4;j++)
+      cin>>A[i][j];
+  cout<<"Elements of the right diagonal =\n\n ";
+  for(i=0;i<4;i++)
+  {for(j=0; j<4;j++)
+      if(i+j==3)
+	cout<<A[i][j];
+      else
+	 cout<<"  ";
+    cout<<'\n';
+  }
+  getch();
+}
