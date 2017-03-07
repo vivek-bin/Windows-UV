@@ -1169,7 +1169,7 @@ void mycomp()           //my computer- containing apps, games, docs
 		  games();
 		  int driver,mode;
 		  driver=DETECT;
-		  initgraph(&driver,&mode,"\\turboc3\\bgi");
+		  initgraph(&driver,&mode,"\\project");
 		  break;
 	 default:break;
        }
@@ -1843,7 +1843,7 @@ void main()
 
    int driver,mode;
    driver=DETECT;                       //starting graphics mode
-   initgraph(&driver,&mode,"\\turboc3");
+   initgraph(&driver,&mode,"\\project");
 
    do
     {
