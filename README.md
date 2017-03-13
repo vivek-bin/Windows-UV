@@ -1,22 +1,22 @@
 # Windows-UV
 
-This project was initially created to learn programming. Then later extended as the high school final project (circa 2010).
+This project was initially created to learn programming. Later, it was extended as the high school final project (circa 2010).
 
-The project is menu driven with multiple applications, and styled like Windows.
+The project is menu driven with multiple applications, and is styled like Windows.
 
-The different application present are -
+The different applications present are -
 
 - ### Text Pad
 
-  basic textpad to create new text files and view, rename and delete the created files
+  textpad to create basic text files and view, rename and delete the created files
   
 - ### Paint (mouse based)
   
-  basic paint tool with multiple brush sizes and colour; save created images to disk
+  drawing tool with multiple brush sizes and colours; can save created images to disk
 
 - ### Periodic Table of Elements
 
-  view different data related to various elements of the periodic table(using a mouse); allows editing data(admin access required)
+  view information related to various elements of the periodic table(using a mouse); allows editing of data(admin access required)
   
 - ### Integer Calculator
 
