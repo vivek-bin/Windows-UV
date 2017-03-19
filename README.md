@@ -35,21 +35,22 @@ The different applications present are -
     includes playing against another player, or against the computer
 
 
-##How to run
+## How to run
 
 The program needs to be run inside DosBox.
 
-1) Extract the PROJECT folder.
+1) Extract the 'PROJECT' folder.
 
-2) Mount the location with the PROJECT folder as C: in DosBox. 
-   Eg. If project extracted to e:\stuff\more_stuff\PROJECT, mount E:\stuff\more_stuff\ as C:
+2) Mount the location with the folder as C: in DosBox. 
+   
+   Eg. If the 'PROJECT' folder is extracted to E:\stuff\more_stuff\PROJECT, mount E:\stuff\more_stuff\ as C:
 
 3) CD to c:\project.
 
 4) Run PROJFIN.exe.
 
 
-##Built With
+## Built With
 The project is implemented on TURBOC++, which is an old C++ compiler and integrated development environment.
 
 The TURBOC++ compiler/IDE used is included.
