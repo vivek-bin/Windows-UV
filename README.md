@@ -8,7 +8,7 @@ The different applications present are -
 
 - ### Text Pad
 
-  textpad to create basic text files and view, rename and delete the created files
+  create basic text files and view, rename and delete the created files
   
 - ### Paint (mouse based)
   
@@ -16,7 +16,7 @@ The different applications present are -
 
 - ### Periodic Table of Elements
 
-  view information related to various elements of the periodic table(using a mouse); allows editing of data(admin access required)
+  view information related to various elements of the periodic table (using a mouse); allows editing of data(admin access required)
   
 - ### Integer Calculator
 
@@ -24,15 +24,17 @@ The different applications present are -
   
 - ### Document Viewer
 
-  view some set plain text files (some common programs)
+  view some set plain text files
   
 - ### Games
   
   + #### Guess the Number
+  
+    basic game with three levels of difficulty
 
   + #### Tic Tac Toe
   
-    includes playing against another player, or against the computer
+    against another player, or against the computer
 
 
 ## How to run
