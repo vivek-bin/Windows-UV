@@ -1,3 +1,5 @@
+![Desktop](screenshots/s2.jpg?raw=true "Desktop")
+
 # Windows-UV
 
 This project was initially created to learn programming. Later, it was extended as the high school final project (circa 2010).
@@ -57,3 +59,12 @@ The project is implemented on TURBOC++, which is an old C++ compiler and integra
 
 The TURBOC++ compiler/IDE used is included.
 
+
+![](screenshots/s1.jpg?raw=true)
+![](screenshots/s2.jpg?raw=true)
+![](screenshots/s3.jpg?raw=true)
+![](screenshots/s4.jpg?raw=true)
+![](screenshots/s5.jpg?raw=true)
+![](screenshots/s6.jpg?raw=true)
+![](screenshots/s7.jpg?raw=true)
+![](screenshots/s8.jpg?raw=true)
